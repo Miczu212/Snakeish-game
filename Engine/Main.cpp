@@ -24,15 +24,42 @@
 
 int WINAPI wWinMain( HINSTANCE hInst,HINSTANCE,LPWSTR pArgs,INT )
 {
+	bool pauza = false;
+	bool temp = false;
 	try
 	{	
 		MainWindow wnd( hInst,pArgs );	
 		try
-		{
+		{	
 			Game theGame( wnd );
 			while( wnd.ProcessMessage() )
 			{
-				theGame.Go();
+				
+				
+				if (GetAsyncKeyState('P')&& 0x8000)
+				{
+					Sleep(1000);
+					if (temp == false)
+					{
+						pauza = true;
+						temp = true;
+					}
+					else
+					{
+						temp = false;
+						pauza = false;
+					}
+						
+					}
+				if (pauza == false) 
+				{
+					theGame.Go();
+				}
+				else 
+				{
+					theGame.zapauza();
+				}
+
 			}
 		}
 		catch( const ChiliException& e )

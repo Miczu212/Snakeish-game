@@ -41,45 +41,291 @@ void Game::Go()
 	
 
 }
+void Game::zapauza()
+{
+	gfx.EndFrame();
+	gfx.BeginFrame();
+	gfx.DrawSprite(0, 0, pauza, 3);
+}
+void Game::drawborders()
+{
+	for (int op = 0; op < 1080 - zmienna1; op++)
+	{
+		gfx.PutPixel(op, 779 - zmienna1, Colors::Red);
+	}
+	for (int po = 0; po < 780 - zmienna1; po++)
+	{
+		gfx.PutPixel(1079 - zmienna1, po, Colors::Red);
+	}
+	for (int op = 0; op < 180; op++)
+	{
+		gfx.PutPixel(op, 61, Colors::Red);
+	}
+	for (int po = 0; po < 60; po++)
+	{
+		gfx.PutPixel(181, po, Colors::Red);
+	}
+}
+void Game::drawhs()
+{
+	gfx.DrawSprite(0, 0, hss, 3);
+	if (i == 0)
+		gfx.DrawSprite(0, 30, l0, 3);
+	else if (i == 1)
+	{
+		hs = 1;
 
+		gfx.DrawSprite(0, 30, l1, 3);
+	}
+	else if (i == 2)
+	{
+		hs = 2;
+		Powierzchnia  l2 = Powierzchnia("2.bmp");
+		gfx.DrawSprite(0, 30, l2, 3);
+	}
+	else if (i == 3)
+	{
+		hs = 3;
+		Powierzchnia  l3 = Powierzchnia("3.bmp");
+		gfx.DrawSprite(0, 30, l3, 3);
+	}
+	else if (i == 4) {
+		hs = 4;
+		Powierzchnia  l4 = Powierzchnia("4.bmp");
+		gfx.DrawSprite(0, 30, l4, 3);
+	}
+	else if (i == 5)
+	{
+		hs = 5;
+		Powierzchnia  l5 = Powierzchnia("5.bmp");
+		gfx.DrawSprite(0, 30, l5, 3);
+	}
+	else if (i == 6) {
+		hs = 6;
+		Powierzchnia  l6 = Powierzchnia("6.bmp");
+		gfx.DrawSprite(0, 30, l6, 3);
+	}
+	else if (i == 7)
+	{
+		hs = 7;
+		Powierzchnia  l7 = Powierzchnia("7.bmp");
+		gfx.DrawSprite(0, 30, l7, 3);
+	}
+	else if (i == 8)
+	{
+		hs = 8;
+		Powierzchnia  l8 = Powierzchnia("8.bmp");
+		gfx.DrawSprite(0, 30, l8, 3);
+	}
+	else if (i == 9)
+	{
+		hs = 9;
+		Powierzchnia  l9 = Powierzchnia("9.bmp");
+		gfx.DrawSprite(0, 30, l9, 3);
+	}
+	else if (i == 10)
+	{
+		hs = 10;
+		gfx.DrawSprite(0, 30, l1, 3);
+		gfx.DrawSprite(30, 30, l0, 3);
+	}
+	else if (i == 11)
+	{
+		hs = 11;
+		gfx.DrawSprite(0, 30, l1, 3);
+		gfx.DrawSprite(30, 30, l1, 3);
+	}
+	else if (i == 12)
+	{
+		hs = 12;
+		Powierzchnia  l2 = Powierzchnia("2.bmp");
+		gfx.DrawSprite(0, 30, l1, 3);
+		gfx.DrawSprite(30, 30, l2, 3);
+	}
+	else if (i == 13)
+	{
+		hs = 13;
+		Powierzchnia  l3 = Powierzchnia("3.bmp");
+		gfx.DrawSprite(0, 30, l1, 3);
+		gfx.DrawSprite(30, 30, l3, 3);
+	}
+	else if (i == 14)
+	{
+		hs = 14;
+		Powierzchnia  l4 = Powierzchnia("4.bmp");
+		gfx.DrawSprite(0, 30, l1, 3);
+		gfx.DrawSprite(30, 30, l4, 3);
+	}
+	else if (i == 15)
+	{
+		hs = 15;
+		Powierzchnia  l5 = Powierzchnia("5.bmp");
+		gfx.DrawSprite(0, 30, l1, 3);
+		gfx.DrawSprite(30, 30, l5, 3);
+	}
+	else if (i == 16)
+	{
+		hs = 16;
+		Powierzchnia  l6 = Powierzchnia("6.bmp");
+		gfx.DrawSprite(0, 30, l1, 3);
+		gfx.DrawSprite(30, 30, l6, 3);
+	}
+	else if (i == 17)
+	{
+		hs = 17;
+		Powierzchnia  l7 = Powierzchnia("7.bmp");
+		gfx.DrawSprite(0, 30, l1, 3);
+		gfx.DrawSprite(0, 30, l7, 3);
+	}
+
+	gfx.DrawSprite(0, 0, hss, 3);
+	if (chs == 0)
+		gfx.DrawSprite(120, 2, l0, 3);
+	else if (chs == 1)
+	{
+
+
+		gfx.DrawSprite(120, 2, l1, 3);
+	}
+	else if (chs == 2)
+	{
+
+		Powierzchnia  l2 = Powierzchnia("2.bmp");
+		gfx.DrawSprite(120, 2, l2, 3);
+	}
+	else if (chs == 3)
+	{
+
+		Powierzchnia  l3 = Powierzchnia("3.bmp");
+		gfx.DrawSprite(120, 2, l3, 3);
+	}
+	else if (chs == 4) {
+
+		Powierzchnia  l4 = Powierzchnia("4.bmp");
+		gfx.DrawSprite(120, 2, l4, 3);
+	}
+	else if (chs == 5)
+	{
+
+		Powierzchnia  l5 = Powierzchnia("5.bmp");
+		gfx.DrawSprite(120, 2, l5, 3);
+	}
+	else if (chs == 6) {
+
+		Powierzchnia  l6 = Powierzchnia("6.bmp");
+		gfx.DrawSprite(120, 2, l6, 3);
+	}
+	else if (chs == 7)
+	{
+
+		Powierzchnia  l7 = Powierzchnia("7.bmp");
+		gfx.DrawSprite(120, 2, l7, 3);
+	}
+	else if (chs == 8)
+	{
+
+		Powierzchnia  l8 = Powierzchnia("8.bmp");
+		gfx.DrawSprite(120, 2, l8, 3);
+	}
+	else if (chs == 9)
+	{
+
+		Powierzchnia  l9 = Powierzchnia("9.bmp");
+		gfx.DrawSprite(120, 2, l9, 3);
+	}
+	else if (chs == 10)
+	{
+
+		gfx.DrawSprite(120, 2, l1, 3);
+		gfx.DrawSprite(150, 2, l0, 3);
+	}
+	else if (chs == 11)
+	{
+
+		gfx.DrawSprite(120, 2, l1, 3);
+		gfx.DrawSprite(150, 2, l1, 3);
+	}
+	else if (chs == 12)
+	{
+
+		Powierzchnia  l2 = Powierzchnia("2.bmp");
+		gfx.DrawSprite(120, 2, l1, 3);
+		gfx.DrawSprite(150, 2, l2, 3);
+	}
+	else if (chs == 13)
+	{
+
+		Powierzchnia  l3 = Powierzchnia("3.bmp");
+		gfx.DrawSprite(120, 2, l1, 3);
+		gfx.DrawSprite(150, 2, l3, 3);
+	}
+	else if (chs == 14)
+	{
+
+		Powierzchnia  l4 = Powierzchnia("4.bmp");
+		gfx.DrawSprite(120, 2, l1, 3);
+		gfx.DrawSprite(150, 2, l4, 3);
+	}
+	else if (chs == 15)
+	{
+
+		Powierzchnia  l5 = Powierzchnia("5.bmp");
+		gfx.DrawSprite(120, 2, l1, 3);
+		gfx.DrawSprite(150, 2, l5, 3);
+	}
+	else if (chs == 16)
+	{
+
+		Powierzchnia  l6 = Powierzchnia("6.bmp");
+		gfx.DrawSprite(120, 2, l1, 3);
+		gfx.DrawSprite(150, 2, l6, 3);
+	}
+	else if (chs == 17)
+	{
+
+		Powierzchnia  l7 = Powierzchnia("7.bmp");
+		gfx.DrawSprite(120, 2, l1, 3);
+		gfx.DrawSprite(150, 2, l7, 3);
+	}
+}
 void Game::UpdateModel()
 {
 
-	if (wnd.kbd.KeyIsPressed(0x48))
+	if (GetAsyncKeyState(0x48))
 	{
 		hardmode = true;
 	}
-	if (wnd.kbd.KeyIsPressed(VK_UP))
+	else if (GetAsyncKeyState(VK_UP))
 	{
 		kierunek = 1;
 	}
 
-	if (wnd.kbd.KeyIsPressed(VK_DOWN))
+	else if (GetAsyncKeyState(VK_DOWN))
 	{
 		kierunek = 2;
 	}
 
-	if (wnd.kbd.KeyIsPressed(VK_LEFT))
+	else if (GetAsyncKeyState(VK_LEFT))
 	{
 		kierunek = 3;
-	
+
 	}
 
-	if (wnd.kbd.KeyIsPressed(VK_RIGHT))
+	else if (GetAsyncKeyState(VK_RIGHT))
 	{
 		kierunek = 4;
-	
+
 	}
 	int p = y - 30;
-	if (kierunek==1 && p < 0)
+	if (kierunek == 1 && p < 0)
 	{
 		gameover = true;
 	}
-	if(kierunek==1 && (p<60 && x<180)) // tu na stalo bo to sprawdza element gorny
+	if (kierunek == 1 && (p < 60 && x < 180)) // tu na stalo bo to sprawdza element gorny
 	{
 		gameover = true;
 	}
-	if(turned==true)
+	if (turned == true)
 	{
 		p = y + h;
 	}
@@ -87,7 +333,7 @@ void Game::UpdateModel()
 
 		p = y + 30;
 	}
-	if (p > 770-zmienna1 && kierunek == 2)
+	if (p > 770 - zmienna1 && kierunek == 2)
 	{
 		gameover = true;
 	}
@@ -96,70 +342,58 @@ void Game::UpdateModel()
 	{
 		gameover = true;
 	}
-	if (kierunek == 3 && p < 180 && y<60 ) // tu na stalo bo to sprawdza element gorny
+	if (kierunek == 3 && p < 180 && y < 60) // tu na stalo bo to sprawdza element gorny
 	{
 		gameover = true;
 	}
 	p = l + x + 30;
-	if (kierunek == 4 && p >= gfx.ScreenWidth-zmienna1)
+	if (kierunek == 4 && p >= gfx.ScreenWidth - zmienna1)
 
 	{
 		gameover = true;
 	}
-	if (wnd.kbd.KeyIsPressed(0x50))
-
-	{
-		Sleep(7000);
-
-	}
-	if (wnd.kbd.KeyIsPressed(VK_UP))
+	if (GetAsyncKeyState(VK_UP))
 	{
 		kierunek = 1;
 	}
-	while (!wnd.kbd.KeyIsEmpty())
+	if (GetAsyncKeyState(0x45))
 	{
-		// get an event from the queue
-		const Keyboard::Event e = wnd.kbd.ReadKey();	
-		if (e.IsPress())
+		turned = !turned;
+		int temp;
+		temp = l;
+		l = h;
+		h = temp;
+		if (y + h > 770)
 		{
-			if (e.GetCode() == 0x45)
-			{
-				turned = !turned;
-				int temp;
-				temp = l;
-				l = h;
-				h = temp;
-				if (y + h > 770)
-				{
-					gameover = true;
-				}
-				else if (x + l > 1060)
-				{
-					gameover = true;
-				}
-				
-			}
-			else if (e.GetCode() == 0x51)
-			{
-				turned = !turned;
-				int temp;
-				temp = l;
-				l = h;
-				h = temp;
-				if (y + h > 770)
-				{
-					gameover = true;
-				}
-				else if (x + l > 1060)
-				{
-					gameover = true;
-				}
-			}
-			
+			gameover = true;
+		}
+		else if (x + l > 1060)
+		{
+			gameover = true;
+		}
+
+	}
+	else if (GetAsyncKeyState(0x51))
+	{
+		turned = !turned;
+		int temp;
+		temp = l;
+		l = h;
+		h = temp;
+		if (y + h > 770)
+		{
+			gameover = true;
+		}
+		else if (x + l > 1060)
+		{
+			gameover = true;
 		}
 	}
-	
+
 }
+	
+	
+
 
 void Game::ComposeFrame() {
 	bool czydalrade = false;
@@ -181,25 +415,10 @@ void Game::ComposeFrame() {
 		else if (kierunek == 3)
 		{
 			x = x - 30;
-		}		
-		for (int op = 0; op < 1080-zmienna1; op++)
-		{
-			gfx.PutPixel(op, 779-zmienna1, Colors::Red);
-		}
-		for (int po = 0; po < 780-zmienna1; po++)
-		{
-			gfx.PutPixel(1079-zmienna1, po, Colors::Red);
-		}
-		for (int op = 0; op < 180; op++)
-		{
-			gfx.PutPixel(op, 61, Colors::Red);
-		}
-		for (int po = 0; po < 60; po++)
-		{
-			gfx.PutPixel(181, po, Colors::Red);
-		}
+		}											//ponizej rysowanie czerwonych granic
+		drawborders();
 		
-		while (zz < i)
+		while (zz < i)	//rysowanie min
 		{
 			gfx.DrawSprite(ixy[zz], iy[zz], mina, 3);
 			zz++;
@@ -396,7 +615,7 @@ void Game::ComposeFrame() {
 			h = 30;
 		}
 		Powierzchnia surf = Powierzchnia(l, h);
-		gfx.DrawSprite(xx, yy, p);
+		gfx.DrawSprite(xx, yy, p);	//rysowanie owockow
 		Sleep(z);
 		if (turned == true)
 		{
@@ -405,6 +624,32 @@ void Game::ComposeFrame() {
 		
 		if (gameover == true)
 		{
+			/*int czyparz = 0;
+			while(l!=0 && h!=0)
+			{
+				if (czyparz % 2 == 0)
+				{
+					gfx.DrawSprite(x, y, surf);
+					l = l - 30;
+					h = h - 30;
+					Powierzchnia surf = Powierzchnia(l, h);
+				}
+				drawhs();
+				drawborders();
+				zz = 0;
+				while (zz < i)	
+				{
+					gfx.DrawSprite(ixy[zz], iy[zz], mina, 3);
+					zz++;
+				}
+				czyparz++;
+				Sleep(1000);
+		gfx.EndFrame();
+		gfx.BeginFrame();
+				
+				
+			}*/
+			//koniec animacji
 			hardmode = false;
 			ggg.Play();
 			zmienna1 = 0;
@@ -429,224 +674,9 @@ void Game::ComposeFrame() {
 				chs = hs;
 			else;
 		}
-		gfx.DrawSprite(x, y, surf);
-			if(i==0)
-			gfx.DrawSprite(0, 30, l0, 3);
-			else if (i == 1)
-			{
-				hs = 1;
-				
-				gfx.DrawSprite(0, 30, l1, 3);
-			}
-			else if (i == 2)
-			{
-				hs = 2;
-				Powierzchnia  l2 = Powierzchnia("2.bmp");
-				gfx.DrawSprite(0, 30, l2, 3);
-			}
-			else if (i == 3)
-			{
-				hs = 3;
-				Powierzchnia  l3 = Powierzchnia("3.bmp");
-				gfx.DrawSprite(0, 30, l3, 3);
-			}
-			else if (i == 4) {
-				hs = 4;
-				Powierzchnia  l4 = Powierzchnia("4.bmp");
-				gfx.DrawSprite(0, 30, l4, 3);
-			}
-			else if (i == 5)
-			{
-				hs = 5;
-				Powierzchnia  l5 = Powierzchnia("5.bmp");
-				gfx.DrawSprite(0, 30, l5, 3);
-			}
-			else if (i == 6) {
-				hs = 6;
-				Powierzchnia  l6 = Powierzchnia("6.bmp");
-				gfx.DrawSprite(0, 30, l6, 3);
-			}
-			else if (i == 7)
-			{
-				hs = 7;
-				Powierzchnia  l7 = Powierzchnia("7.bmp");
-				gfx.DrawSprite(0, 30, l7, 3);
-			}
-			else if (i == 8)
-			{
-				hs = 8;
-				Powierzchnia  l8 = Powierzchnia("8.bmp");
-				gfx.DrawSprite(0, 30, l8, 3);
-			}
-			else if (i == 9)
-			{
-				hs = 9;
-				Powierzchnia  l9 = Powierzchnia("9.bmp");
-				gfx.DrawSprite(0, 30, l9, 3);
-			}
-			else if (i == 10)
-			{
-				hs = 10;
-				gfx.DrawSprite(0, 30, l1, 3);
-				gfx.DrawSprite(30, 30, l0, 3);
-			}
-			else if (i == 11)
-			{
-				hs = 11;
-				gfx.DrawSprite(0, 30, l1, 3);
-				gfx.DrawSprite(30, 30, l1, 3);
-			}
-			else if (i == 12)
-			{
-				hs = 12;
-				Powierzchnia  l2 = Powierzchnia("2.bmp");
-				gfx.DrawSprite(0, 30, l1, 3);
-				gfx.DrawSprite(30, 30, l2, 3);
-			}
-			else if (i == 13)
-			{
-				hs = 13;
-				Powierzchnia  l3 = Powierzchnia("3.bmp");
-				gfx.DrawSprite(0, 30, l1, 3);
-				gfx.DrawSprite(30, 30, l3, 3);
-			}
-			else if (i == 14)
-			{
-				hs = 14;
-				Powierzchnia  l4 = Powierzchnia("4.bmp");
-				gfx.DrawSprite(0, 30, l1, 3);
-				gfx.DrawSprite(30, 30, l4, 3);
-			}
-			else if (i == 15)
-			{
-				hs = 15;
-				Powierzchnia  l5 = Powierzchnia("5.bmp");
-				gfx.DrawSprite(0, 30, l1, 3);
-				gfx.DrawSprite(30, 30, l5, 3);
-			}
-			else if (i == 16)
-			{
-				hs = 16;
-				Powierzchnia  l6 = Powierzchnia("6.bmp");
-				gfx.DrawSprite(0, 30, l1, 3);
-				gfx.DrawSprite(30, 30, l6, 3);
-			}
-			else if (i == 17)
-			{
-			hs = 17;
-				Powierzchnia  l7 = Powierzchnia("7.bmp");
-				gfx.DrawSprite(0, 30, l1, 3);
-				gfx.DrawSprite(0, 30, l7, 3);
-			}
-			
-			gfx.DrawSprite(0, 0, hss, 3);
-			if (chs == 0)
-				gfx.DrawSprite(120, 2, l0, 3);
-			else if (chs == 1)
-			{
-				
+		gfx.DrawSprite(x, y, surf);	//nasz gracz
+		drawhs();
 
-				gfx.DrawSprite(120, 2, l1, 3);
-			}
-			else if (chs == 2)
-			{
-				
-				Powierzchnia  l2 = Powierzchnia("2.bmp");
-				gfx.DrawSprite(120, 2, l2, 3);
-			}
-			else if (chs == 3)
-			{
 			
-				Powierzchnia  l3 = Powierzchnia("3.bmp");
-				gfx.DrawSprite(120, 2, l3, 3);
-			}
-			else if (chs == 4) {
-				
-				Powierzchnia  l4 = Powierzchnia("4.bmp");
-				gfx.DrawSprite(120, 2, l4, 3);
-			}
-			else if (chs == 5)
-			{
-				
-				Powierzchnia  l5 = Powierzchnia("5.bmp");
-				gfx.DrawSprite(120, 2, l5, 3);
-			}
-			else if (chs == 6) {
-				
-				Powierzchnia  l6 = Powierzchnia("6.bmp");
-				gfx.DrawSprite(120,2, l6, 3);
-			}
-			else if (chs == 7)
-			{
-				
-				Powierzchnia  l7 = Powierzchnia("7.bmp");
-				gfx.DrawSprite(120, 2, l7, 3);
-			}
-			else if (chs == 8)
-			{
-			
-				Powierzchnia  l8 = Powierzchnia("8.bmp");
-				gfx.DrawSprite(120, 2, l8, 3);
-			}
-			else if (chs == 9)
-			{
-				
-				Powierzchnia  l9 = Powierzchnia("9.bmp");
-				gfx.DrawSprite(120,2, l9, 3);
-			}
-			else if (chs == 10)
-			{
-				
-				gfx.DrawSprite(120, 2, l1, 3);
-				gfx.DrawSprite(150, 2, l0, 3);
-			}
-			else if (chs == 11)
-			{
-				
-				gfx.DrawSprite(120, 2, l1, 3);
-				gfx.DrawSprite(150, 2, l1, 3);
-			}
-			else if (chs == 12)
-			{
-			
-				Powierzchnia  l2 = Powierzchnia("2.bmp");
-				gfx.DrawSprite(120, 2, l1, 3);
-				gfx.DrawSprite(150, 2, l2, 3);
-			}
-			else if (chs == 13)
-			{
-				
-				Powierzchnia  l3 = Powierzchnia("3.bmp");
-				gfx.DrawSprite(120, 2, l1, 3);
-				gfx.DrawSprite(150,2, l3, 3);
-			}
-			else if (chs == 14)
-			{
-				
-				Powierzchnia  l4 = Powierzchnia("4.bmp");
-				gfx.DrawSprite(120, 2, l1, 3);
-				gfx.DrawSprite(150, 2, l4, 3);
-			}
-			else if (chs == 15)
-			{
-			
-				Powierzchnia  l5 = Powierzchnia("5.bmp");
-				gfx.DrawSprite(120, 2, l1, 3);
-				gfx.DrawSprite(150, 2, l5, 3);
-			}
-			else if (chs == 16)
-			{
-				
-				Powierzchnia  l6 = Powierzchnia("6.bmp");
-				gfx.DrawSprite(120, 2, l1, 3);
-				gfx.DrawSprite(150, 2, l6, 3);
-			}
-			else if (chs == 17)
-			{
-				
-				Powierzchnia  l7 = Powierzchnia("7.bmp");
-				gfx.DrawSprite(120, 2, l1, 3);
-				gfx.DrawSprite(150, 2, l7, 3);
-			}
 
 }

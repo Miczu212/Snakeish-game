@@ -37,7 +37,9 @@ public:
 	std::vector<int> ixy;
 	std::vector<int> iy;
 	bool isEaten = true, gameover = false, bomba = false, turned = false, hardmode = false;
-	
+	void zapauza();
+	void drawhs();
+	void drawborders();
 
 private:
 	void ComposeFrame();
@@ -51,11 +53,12 @@ private:
 	Graphics gfx;
 	Powierzchnia gg = Powierzchnia("gameover.bmp");
 	Powierzchnia mina = Powierzchnia("mina.bmp");
-	Powierzchnia pauza = Powierzchnia("pauza.bmp");
+	Powierzchnia pauza = Powierzchnia("pausa.bmp");
 	Powierzchnia p = Powierzchnia(30, 30);
 	Powierzchnia  l0= Powierzchnia("0.bmp");
 	Powierzchnia  l1 = Powierzchnia("1.bmp");
 	Powierzchnia hss = Powierzchnia("hs.bmp");
+	Powierzchnia anim = Powierzchnia("anim.bmp");
 	Sound ggg;
 	/********************************/
 	/*  User Variables              */
