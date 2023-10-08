@@ -476,10 +476,22 @@ void Game::ComposeFrame() {
 				yyy = (rand() % 25) * 30;
 				while ((xxx==xx && yyy==yy) || (xxx==x && yyy==y)|| (xxx == x-30 && yyy == y)|| (xxx == x && yyy == y-30)|| (xxx == x && yyy == y+30)||(xxx == x+30 && yyy == y))
 				{
-
-						srand(time(NULL));
-						xxx = (rand() % 35) * 30;
-						yyy = (rand() % 25) * 30;
+					int temp123 = l;
+					int temp321 = h;
+					while (temp123>0 || temp321>0)
+					{
+						while (xxx == x + temp123 || yyy == y + temp321)
+						{
+							srand(time(NULL));
+							xxx = (rand() % 35) * 30;
+							yyy = (rand() % 25) * 30;
+								temp321 = h+30;
+								temp123 = l+30;
+						}
+						temp123 -= 30;
+						temp321 -= 30;
+					}
+						
 
 					}
 				
