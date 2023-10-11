@@ -480,7 +480,7 @@ void Game::ComposeFrame() {
 					int temp321 = h;
 					while (temp123>0 || temp321>0)
 					{
-						while (xxx == x + temp123 || yyy == y + temp321)
+						while (xxx == x + temp123 || yyy == y + temp321||xxx==xx||yyy==yy)
 						{
 							srand(time(NULL));
 							xxx = (rand() % 35) * 30;
