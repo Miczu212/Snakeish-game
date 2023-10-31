@@ -28,7 +28,7 @@ Game::Game( MainWindow& wnd )
 	:
 	wnd( wnd ),
 	gfx( wnd ),
-	ggg(L"gameover.mp3")
+	gameoversound(L"gameover.mp3")
 {
 }
 
@@ -47,15 +47,15 @@ void Game::zapauza()
 	gfx.BeginFrame();
 	gfx.DrawSprite(0, 0, pauza, 3);
 }
-void Game::drawborders()
+void Game::Draw_Borders()
 {
-	for (int op = 0; op < 1080 - zmienna1; op++)
+	for (int op = 0; op < 1080 - Hardmode_border; op++)
 	{
-		gfx.PutPixel(op, 779 - zmienna1, Colors::Red);
+		gfx.PutPixel(op, 779 - Hardmode_border, Colors::Red);
 	}
-	for (int po = 0; po < 780 - zmienna1; po++)
+	for (int po = 0; po < 780 - Hardmode_border; po++)
 	{
-		gfx.PutPixel(1079 - zmienna1, po, Colors::Red);
+		gfx.PutPixel(1079 - Hardmode_border, po, Colors::Red);
 	}
 	for (int op = 0; op < 180; op++)
 	{
@@ -66,225 +66,225 @@ void Game::drawborders()
 		gfx.PutPixel(181, po, Colors::Red);
 	}
 }
-void Game::drawhs()
+void Game::Draw_highscore()
 {
 	gfx.DrawSprite(0, 0, hss, 3);
 	if (i == 0)
-		gfx.DrawSprite(0, 30, l0, 3);
+		gfx.DrawSprite(0, 30, cyfra1, 3);
 	else if (i == 1)
 	{
-		hs = 1;
+		highscore = 1;
 
-		gfx.DrawSprite(0, 30, l1, 3);
+		gfx.DrawSprite(0, 30, cyfra2, 3);
 	}
 	else if (i == 2)
 	{
-		hs = 2;
+		highscore = 2;
 		Powierzchnia  l2 = Powierzchnia("2.bmp");
 		gfx.DrawSprite(0, 30, l2, 3);
 	}
 	else if (i == 3)
 	{
-		hs = 3;
+		highscore = 3;
 		Powierzchnia  l3 = Powierzchnia("3.bmp");
 		gfx.DrawSprite(0, 30, l3, 3);
 	}
 	else if (i == 4) {
-		hs = 4;
+		highscore = 4;
 		Powierzchnia  l4 = Powierzchnia("4.bmp");
 		gfx.DrawSprite(0, 30, l4, 3);
 	}
 	else if (i == 5)
 	{
-		hs = 5;
+		highscore = 5;
 		Powierzchnia  l5 = Powierzchnia("5.bmp");
 		gfx.DrawSprite(0, 30, l5, 3);
 	}
 	else if (i == 6) {
-		hs = 6;
+		highscore = 6;
 		Powierzchnia  l6 = Powierzchnia("6.bmp");
 		gfx.DrawSprite(0, 30, l6, 3);
 	}
 	else if (i == 7)
 	{
-		hs = 7;
+		highscore = 7;
 		Powierzchnia  l7 = Powierzchnia("7.bmp");
 		gfx.DrawSprite(0, 30, l7, 3);
 	}
 	else if (i == 8)
 	{
-		hs = 8;
+		highscore = 8;
 		Powierzchnia  l8 = Powierzchnia("8.bmp");
 		gfx.DrawSprite(0, 30, l8, 3);
 	}
 	else if (i == 9)
 	{
-		hs = 9;
+		highscore = 9;
 		Powierzchnia  l9 = Powierzchnia("9.bmp");
 		gfx.DrawSprite(0, 30, l9, 3);
 	}
 	else if (i == 10)
 	{
-		hs = 10;
-		gfx.DrawSprite(0, 30, l1, 3);
-		gfx.DrawSprite(30, 30, l0, 3);
+		highscore = 10;
+		gfx.DrawSprite(0, 30, cyfra2, 3);
+		gfx.DrawSprite(30, 30, cyfra1, 3);
 	}
 	else if (i == 11)
 	{
-		hs = 11;
-		gfx.DrawSprite(0, 30, l1, 3);
-		gfx.DrawSprite(30, 30, l1, 3);
+		highscore = 11;
+		gfx.DrawSprite(0, 30, cyfra2, 3);
+		gfx.DrawSprite(30, 30, cyfra2, 3);
 	}
 	else if (i == 12)
 	{
-		hs = 12;
+		highscore = 12;
 		Powierzchnia  l2 = Powierzchnia("2.bmp");
-		gfx.DrawSprite(0, 30, l1, 3);
+		gfx.DrawSprite(0, 30, cyfra2, 3);
 		gfx.DrawSprite(30, 30, l2, 3);
 	}
 	else if (i == 13)
 	{
-		hs = 13;
+		highscore = 13;
 		Powierzchnia  l3 = Powierzchnia("3.bmp");
-		gfx.DrawSprite(0, 30, l1, 3);
+		gfx.DrawSprite(0, 30, cyfra2, 3);
 		gfx.DrawSprite(30, 30, l3, 3);
 	}
 	else if (i == 14)
 	{
-		hs = 14;
+		highscore = 14;
 		Powierzchnia  l4 = Powierzchnia("4.bmp");
-		gfx.DrawSprite(0, 30, l1, 3);
+		gfx.DrawSprite(0, 30, cyfra2, 3);
 		gfx.DrawSprite(30, 30, l4, 3);
 	}
 	else if (i == 15)
 	{
-		hs = 15;
+		highscore = 15;
 		Powierzchnia  l5 = Powierzchnia("5.bmp");
-		gfx.DrawSprite(0, 30, l1, 3);
+		gfx.DrawSprite(0, 30, cyfra2, 3);
 		gfx.DrawSprite(30, 30, l5, 3);
 	}
 	else if (i == 16)
 	{
-		hs = 16;
+		highscore = 16;
 		Powierzchnia  l6 = Powierzchnia("6.bmp");
-		gfx.DrawSprite(0, 30, l1, 3);
+		gfx.DrawSprite(0, 30, cyfra2, 3);
 		gfx.DrawSprite(30, 30, l6, 3);
 	}
 	else if (i == 17)
 	{
-		hs = 17;
+		highscore = 17;
 		Powierzchnia  l7 = Powierzchnia("7.bmp");
-		gfx.DrawSprite(0, 30, l1, 3);
+		gfx.DrawSprite(0, 30, cyfra2, 3);
 		gfx.DrawSprite(0, 30, l7, 3);
 	}
 
 	gfx.DrawSprite(0, 0, hss, 3);
-	if (chs == 0)
-		gfx.DrawSprite(120, 2, l0, 3);
-	else if (chs == 1)
+	if (Current_highscore == 0)
+		gfx.DrawSprite(120, 2, cyfra1, 3);
+	else if (Current_highscore == 1)
 	{
 
 
-		gfx.DrawSprite(120, 2, l1, 3);
+		gfx.DrawSprite(120, 2, cyfra2, 3);
 	}
-	else if (chs == 2)
+	else if (Current_highscore == 2)
 	{
 
 		Powierzchnia  l2 = Powierzchnia("2.bmp");
 		gfx.DrawSprite(120, 2, l2, 3);
 	}
-	else if (chs == 3)
+	else if (Current_highscore == 3)
 	{
 
 		Powierzchnia  l3 = Powierzchnia("3.bmp");
 		gfx.DrawSprite(120, 2, l3, 3);
 	}
-	else if (chs == 4) {
+	else if (Current_highscore == 4) {
 
 		Powierzchnia  l4 = Powierzchnia("4.bmp");
 		gfx.DrawSprite(120, 2, l4, 3);
 	}
-	else if (chs == 5)
+	else if (Current_highscore == 5)
 	{
 
 		Powierzchnia  l5 = Powierzchnia("5.bmp");
 		gfx.DrawSprite(120, 2, l5, 3);
 	}
-	else if (chs == 6) {
+	else if (Current_highscore == 6) {
 
 		Powierzchnia  l6 = Powierzchnia("6.bmp");
 		gfx.DrawSprite(120, 2, l6, 3);
 	}
-	else if (chs == 7)
+	else if (Current_highscore == 7)
 	{
 
 		Powierzchnia  l7 = Powierzchnia("7.bmp");
 		gfx.DrawSprite(120, 2, l7, 3);
 	}
-	else if (chs == 8)
+	else if (Current_highscore == 8)
 	{
 
 		Powierzchnia  l8 = Powierzchnia("8.bmp");
 		gfx.DrawSprite(120, 2, l8, 3);
 	}
-	else if (chs == 9)
+	else if (Current_highscore == 9)
 	{
 
 		Powierzchnia  l9 = Powierzchnia("9.bmp");
 		gfx.DrawSprite(120, 2, l9, 3);
 	}
-	else if (chs == 10)
+	else if (Current_highscore == 10)
 	{
 
-		gfx.DrawSprite(120, 2, l1, 3);
-		gfx.DrawSprite(150, 2, l0, 3);
+		gfx.DrawSprite(120, 2, cyfra2, 3);
+		gfx.DrawSprite(150, 2, cyfra1, 3);
 	}
-	else if (chs == 11)
+	else if (Current_highscore == 11)
 	{
 
-		gfx.DrawSprite(120, 2, l1, 3);
-		gfx.DrawSprite(150, 2, l1, 3);
+		gfx.DrawSprite(120, 2, cyfra2, 3);
+		gfx.DrawSprite(150, 2, cyfra2, 3);
 	}
-	else if (chs == 12)
+	else if (Current_highscore == 12)
 	{
 
 		Powierzchnia  l2 = Powierzchnia("2.bmp");
-		gfx.DrawSprite(120, 2, l1, 3);
+		gfx.DrawSprite(120, 2, cyfra2, 3);
 		gfx.DrawSprite(150, 2, l2, 3);
 	}
-	else if (chs == 13)
+	else if (Current_highscore == 13)
 	{
 
 		Powierzchnia  l3 = Powierzchnia("3.bmp");
-		gfx.DrawSprite(120, 2, l1, 3);
+		gfx.DrawSprite(120, 2, cyfra2, 3);
 		gfx.DrawSprite(150, 2, l3, 3);
 	}
-	else if (chs == 14)
+	else if (Current_highscore == 14)
 	{
 
 		Powierzchnia  l4 = Powierzchnia("4.bmp");
-		gfx.DrawSprite(120, 2, l1, 3);
+		gfx.DrawSprite(120, 2, cyfra2, 3);
 		gfx.DrawSprite(150, 2, l4, 3);
 	}
-	else if (chs == 15)
+	else if (Current_highscore == 15)
 	{
 
 		Powierzchnia  l5 = Powierzchnia("5.bmp");
-		gfx.DrawSprite(120, 2, l1, 3);
+		gfx.DrawSprite(120, 2, cyfra2, 3);
 		gfx.DrawSprite(150, 2, l5, 3);
 	}
-	else if (chs == 16)
+	else if (Current_highscore == 16)
 	{
 
 		Powierzchnia  l6 = Powierzchnia("6.bmp");
-		gfx.DrawSprite(120, 2, l1, 3);
+		gfx.DrawSprite(120, 2, cyfra2, 3);
 		gfx.DrawSprite(150, 2, l6, 3);
 	}
-	else if (chs == 17)
+	else if (Current_highscore == 17)
 	{
 
 		Powierzchnia  l7 = Powierzchnia("7.bmp");
-		gfx.DrawSprite(120, 2, l1, 3);
+		gfx.DrawSprite(120, 2, cyfra2, 3);
 		gfx.DrawSprite(150, 2, l7, 3);
 	}
 }
@@ -316,38 +316,38 @@ void Game::UpdateModel()
 		kierunek = 4;
 
 	}
-	int p = y - 30;
+	int p = Pozycja_y - 30;
 	if (kierunek == 1 && p < 0)
 	{
 		gameover = true;
 	}
-	if (kierunek == 1 && (p < 60 && x < 180)) // tu na stalo bo to sprawdza element gorny
+	if (kierunek == 1 && (p < 60 && Pozycja_x < 180)) // tu na stalo bo to sprawdza element gorny
 	{
 		gameover = true;
 	}
 	if (turned == true)
 	{
-		p = y + h;
+		p = Pozycja_y + wysokosc;
 	}
 	else {
 
-		p = y + 30;
+		p = Pozycja_y + 30;
 	}
-	if (p > 770 - zmienna1 && kierunek == 2)
+	if (p > 770 - Hardmode_border && kierunek == 2)
 	{
 		gameover = true;
 	}
-	p = x - 30;
+	p = Pozycja_x - 30;
 	if (kierunek == 3 && p < 0)
 	{
 		gameover = true;
 	}
-	if (kierunek == 3 && p < 180 && y < 60) // tu na stalo bo to sprawdza element gorny
+	if (kierunek == 3 && p < 180 && Pozycja_y < 60) // tu na stalo bo to sprawdza element gorny
 	{
 		gameover = true;
 	}
-	p = l + x + 30;
-	if (kierunek == 4 && p >= gfx.ScreenWidth - zmienna1)
+	p = dlugosc + Pozycja_x + 30;
+	if (kierunek == 4 && p >= gfx.ScreenWidth - Hardmode_border)
 
 	{
 		gameover = true;
@@ -360,14 +360,14 @@ void Game::UpdateModel()
 	{
 		turned = !turned;
 		int temp;
-		temp = l;
-		l = h;
-		h = temp;
-		if (y + h > 770)
+		temp = dlugosc;
+		dlugosc = wysokosc;
+		wysokosc = temp;
+		if (Pozycja_y + wysokosc > 770)
 		{
 			gameover = true;
 		}
-		else if (x + l > 1060)
+		else if (Pozycja_x + dlugosc > 1060)
 		{
 			gameover = true;
 		}
@@ -377,14 +377,14 @@ void Game::UpdateModel()
 	{
 		turned = !turned;
 		int temp;
-		temp = l;
-		l = h;
-		h = temp;
-		if (y + h > 770)
+		temp = dlugosc;
+		dlugosc = wysokosc;
+		wysokosc = temp;
+		if (Pozycja_y + wysokosc > 770)
 		{
 			gameover = true;
 		}
-		else if (x + l > 1060)
+		else if (Pozycja_x + dlugosc > 1060)
 		{
 			gameover = true;
 		}
@@ -398,32 +398,32 @@ void Game::UpdateModel()
 void Game::ComposeFrame() {
 	bool czydalrade = false;
 	srand(time(NULL));
-	int zz = 0;
+	int iterator1 = 0;
 		if (kierunek == 1)
 		{
-			y = y - 30;
+			Pozycja_y = Pozycja_y - 30;
 		}
 
 		else if (kierunek == 2)
 		{
-			y = y + 30;
+			Pozycja_y = Pozycja_y + 30;
 		}
 		else if (kierunek == 4)
 		{
-			x = x + 30;
+			Pozycja_x = Pozycja_x + 30;
 		}
 		else if (kierunek == 3)
 		{
-			x = x - 30;
+			Pozycja_x = Pozycja_x - 30;
 		}											//ponizej rysowanie czerwonych granic
-		drawborders();
+		Draw_Borders();
 		
-		while (zz < i)	//rysowanie min
+		while (iterator1 < i)	//rysowanie min
 		{
-			gfx.DrawSprite(ixy[zz], iy[zz], mina, 3);
-			zz++;
+			gfx.DrawSprite(Tabela_Min_x[iterator1], Tabela_Min_y[iterator1], mina, 3);
+			iterator1++;
 		}
-		zz = 0;
+		iterator1 = 0;
 
 		
 		if (isEaten == true)
@@ -431,26 +431,26 @@ void Game::ComposeFrame() {
 		{
 		}
 			if (turned == false)
-				l = l + 30;
+				dlugosc = dlugosc + 30;
 			else
-				h = h + 30;
-			z = z - 20;
-			xx = (rand() % ((gfx.ScreenWidth - 30-zmienna1) / 30)) * 30;
-			yy = (rand() % ((gfx.ScreenHeight - 30-zmienna1) / 30)) * 30;
+				wysokosc = wysokosc + 30;
+			Czas = Czas - 20;
+			Pozycja_Owocek_x = (rand() % ((gfx.ScreenWidth - 30-Hardmode_border) / 30)) * 30;
+			Pozycja_Owocek_y = (rand() % ((gfx.ScreenHeight - 30-Hardmode_border) / 30)) * 30;
 			if (i == -1)
 			{
-				xx = (rand() % 10) * 30;
-				yy = (rand() % 10) * 30;
+				Pozycja_Owocek_x = (rand() % 10) * 30;
+				Pozycja_Owocek_y = (rand() % 10) * 30;
 			}
-			while (yy<60)
+			while (Pozycja_Owocek_y<60)
 			{
-				if (xx < 180) {
+				if (Pozycja_Owocek_x < 180) {
 					
 					srand(time(NULL));
-					yy = (rand() % 26) * 30;
+					Pozycja_Owocek_y = (rand() % 26) * 30;
 					if (i == -1)
 					{
-						yy = (rand() % 10) * 30;
+						Pozycja_Owocek_y = (rand() % 10) * 30;
 					}
 				}
 				else
@@ -458,177 +458,165 @@ void Game::ComposeFrame() {
 				}
 			if (hardmode == true)
 			{
-				zmienna1 += 15;
+				Hardmode_border += 15;
 			}
 			i++;
 			isEaten = false;
 			bomba = true;
-			ixy.clear();
-			iy.clear();
+			Tabela_Min_x.clear();
+			Tabela_Min_y.clear();
 		}
 		if (bomba == true)
 		{
-			int ww = 0;
+			int iterator2 = 0;
 			bomba = false;
-			while (zz < i)
+			while (iterator1 < i)
 			{
-				xxx = (rand() % 35) * 30;
-				yyy = (rand() % 25) * 30;
-				while ((xxx==xx && yyy==yy) || (xxx==x && yyy==y)|| (xxx == x-30 && yyy == y)|| (xxx == x && yyy == y-30)|| (xxx == x && yyy == y+30)||(xxx == x+30 && yyy == y))
+				Pozycja_Mina_x = (rand() % 35) * 30;
+				Pozycja_Mina_y = (rand() % 25) * 30;
+				while ((Pozycja_Mina_x==Pozycja_Owocek_x && Pozycja_Mina_y==Pozycja_Owocek_y) || (Pozycja_Mina_x==Pozycja_x && Pozycja_Mina_y==Pozycja_y)|| (Pozycja_Mina_x == Pozycja_x-30 && Pozycja_Mina_y == Pozycja_y)|| (Pozycja_Mina_x == Pozycja_x && Pozycja_Mina_y == Pozycja_y-30)|| (Pozycja_Mina_x == Pozycja_x && Pozycja_Mina_y == Pozycja_y+30)||(Pozycja_Mina_x == Pozycja_x+30 && Pozycja_Mina_y == Pozycja_y))
 				{
-					int temp123 = l;
-					int temp321 = h;
-					while (temp123>0 || temp321>0)
-					{
-						while (xxx == x + temp123 || yyy == y + temp321||xxx==xx||yyy==yy)
-						{
-							srand(time(NULL));
-							xxx = (rand() % 35) * 30;
-							yyy = (rand() % 25) * 30;
-								temp321 = h+30;
-								temp123 = l+30;
-						}
-						temp123 -= 30;
-						temp321 -= 30;
-					}
-						
+
+						srand(time(NULL));
+						Pozycja_Mina_x = (rand() % 35) * 30;
+						Pozycja_Mina_y = (rand() % 25) * 30;
 
 					}
 				
 
-				ixy.push_back(xxx);
-				iy.push_back(yyy);
+				Tabela_Min_x.push_back(Pozycja_Mina_x);
+				Tabela_Min_y.push_back(Pozycja_Mina_y);
 				if (turned == false)
 				{
-					while (ww != l)
+					while (iterator2 != dlugosc)
 					{
-						if (xxx == x + ww && yyy == y)
+						if (Pozycja_Mina_x == Pozycja_x + iterator2 && Pozycja_Mina_y == Pozycja_y)
 						{
-							ixy.pop_back();
-							iy.pop_back();
-							zz = zz - 1;
-							ww = 0;
+							Tabela_Min_x.pop_back();
+							Tabela_Min_y.pop_back();
+							iterator1 = iterator1 - 1;
+							iterator2 = 0;
 							break;
 						}
-						ww += 30;
+						iterator2 += 30;
 					}
 				}
 				else
 				{
-					while (ww != h)
+					while (iterator2 != wysokosc)
 					{
-						if (xxx == x && yyy == y + ww)
+						if (Pozycja_Mina_x == Pozycja_x && Pozycja_Mina_y == Pozycja_y + iterator2)
 						{
-							ixy.pop_back();
-							iy.pop_back();
-							zz = zz - 1;
-							ww = 0;
+							Tabela_Min_x.pop_back();
+							Tabela_Min_y.pop_back();
+							iterator1 = iterator1 - 1;
+							iterator2 = 0;
 							break;
 						}
-						ww += 30;
+						iterator2 += 30;
 					}
 				}
-				zz++;
+				iterator1++;
 
 			}
-			zz = 0;
+			iterator1 = 0;
 			czydalrade = true;
 		}
-		int w = 0;
+		int iterator3 = 0;
 		if (turned == false)
 		{
-			while (w != l)
+			while (iterator3 != dlugosc)
 			{
-				if (w + x == xx && y == yy)
+				if (iterator3 + Pozycja_x == Pozycja_Owocek_x && Pozycja_y == Pozycja_Owocek_y)
 					isEaten = true;
-				w += 30;
+				iterator3 += 30;
 			}
-			w = 0;
-			while (w != l)
+			iterator3 = 0;
+			while (iterator3 != dlugosc)
 			{
 				if (bomba == true)
 				{
-					while (zz < i - 1)
+					while (iterator1 < i - 1)
 					{
-						if (x + w == ixy[zz] && y == iy[zz])
+						if (Pozycja_x + iterator3 == Tabela_Min_x[iterator1] && Pozycja_y == Tabela_Min_y[iterator1])
 						{
 							if (czydalrade == false)
 								gameover = true;
 							czydalrade = false;
 
 						}
-						zz++;
+						iterator1++;
 					}
-					zz = 0;
-					w += 30;
+					iterator1 = 0;
+					iterator3 += 30;
 				}
 				else
 				{
-					while (zz < i)
+					while (iterator1 < i)
 					{
-						if (x + w == ixy[zz] && y == iy[zz])
+						if (Pozycja_x + iterator3 == Tabela_Min_x[iterator1] && Pozycja_y == Tabela_Min_y[iterator1])
 						{
 							gameover = true;
 
 						}
-						zz++;
+						iterator1++;
 					}
-					zz = 0;
-					w += 30;
+					iterator1 = 0;
+					iterator3 += 30;
 				}
 			}
 		}
 		else
 		{
-			while (w != h)
+			while (iterator3 != wysokosc)
 			{
-				if (x == xx && y+w == yy)
+				if (Pozycja_x == Pozycja_Owocek_x && Pozycja_y+iterator3 == Pozycja_Owocek_y)
 					isEaten = true;
-				w += 30;
+				iterator3 += 30;
 			}
-			w = 0;
-			while (w != h)
+			iterator3 = 0;
+			while (iterator3 != wysokosc)
 			{
 				if (bomba == true)
 				{
-					while (zz < i - 1)
+					while (iterator1 < i - 1)
 					{
-						if (x == ixy[zz] && y+w == iy[zz])
+						if (Pozycja_x == Tabela_Min_x[iterator1] && Pozycja_y+iterator3 == Tabela_Min_y[iterator1])
 						{
 							if (czydalrade == false)
 								gameover = true;
 							czydalrade = false;
 
 						}
-						zz++;
+						iterator1++;
 					}
-					zz = 0;
-					w += 30;
+					iterator1 = 0;
+					iterator3 += 30;
 				}
 				else
 				{
-					while (zz < i)
+					while (iterator1 < i)
 					{
-						if (x == ixy[zz] && y+w == iy[zz])
+						if (Pozycja_x == Tabela_Min_x[iterator1] && Pozycja_y+iterator3 == Tabela_Min_y[iterator1])
 						{
 							gameover = true;
 
 						}
-						zz++;
+						iterator1++;
 					}
-					zz = 0;
-					w += 30;
+					iterator1 = 0;
+					iterator3 += 30;
 				}
 			}
 		}
-		if (l == 0 || h == 0)
+		if (dlugosc == 0 || wysokosc == 0)
 		{
-			l = 30;
-			h = 30;
+			dlugosc = 30;
+			wysokosc = 30;
 		}
-		Powierzchnia surf = Powierzchnia(l, h);
-		gfx.DrawSprite(xx, yy, p);	//rysowanie owockow
-		Sleep(z);
+		Powierzchnia gracz = Powierzchnia(dlugosc, wysokosc);
+		gfx.DrawSprite(Pozycja_Owocek_x, Pozycja_Owocek_y, owocek);	//rysowanie owockow
+		Sleep(Czas);
 		if (turned == true)
 		{
 
@@ -636,58 +624,33 @@ void Game::ComposeFrame() {
 		
 		if (gameover == true)
 		{
-			/*int czyparz = 0;
-			while(l!=0 && h!=0)
-			{
-				if (czyparz % 2 == 0)
-				{
-					gfx.DrawSprite(x, y, surf);
-					l = l - 30;
-					h = h - 30;
-					Powierzchnia surf = Powierzchnia(l, h);
-				}
-				drawhs();
-				drawborders();
-				zz = 0;
-				while (zz < i)	
-				{
-					gfx.DrawSprite(ixy[zz], iy[zz], mina, 3);
-					zz++;
-				}
-				czyparz++;
-				Sleep(1000);
-		gfx.EndFrame();
-		gfx.BeginFrame();
-				
-				
-			}*/
-			//koniec animacji
+		
 			hardmode = false;
-			ggg.Play();
-			zmienna1 = 0;
-			gfx.DrawSprite(0, 0, gg, 3);
+			gameoversound.Play();
+			Hardmode_border = 0;
+			gfx.DrawSprite(0, 0, gameoverimage, 3);
 			gameover = false;
 			if (turned == false)
-				l = 0;
+				dlugosc = 0;
 			else
-				h = 0;
+				wysokosc = 0;
 			isEaten = true;
-			x = 60;
-			y = 60;
-			z = 370;
-			zz = 0;
+			Pozycja_x = 60;
+			Pozycja_y = 60;
+			Czas = 370;
+			iterator1 = 0;
 			i = -1;
-			ixy.clear();
-			iy.clear();
+			Tabela_Min_x.clear();
+			Tabela_Min_y.clear();
 			bomba = false;
 			kierunek = -1;
 			turned = false;
-			if (hs > chs)
-				chs = hs;
+			if (highscore > Current_highscore)
+				Current_highscore = highscore;
 			else;
 		}
-		gfx.DrawSprite(x, y, surf);	//nasz gracz
-		drawhs();
+		gfx.DrawSprite(Pozycja_x, Pozycja_y, gracz);	//nasz gracz
+		Draw_highscore();
 
 			
 

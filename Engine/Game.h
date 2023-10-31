@@ -33,13 +33,13 @@ public:
 	Game( const Game& ) = delete;
 	Game& operator=( const Game& ) = delete;
 	void Go();
-	int x = 60, y = 60, l = 0, xx = 0, yy = 0, z = 370, i = -1, xxx = 0, yyy = 0, kierunek=-1, h = 30, hs=0,chs=0;
-	std::vector<int> ixy;
-	std::vector<int> iy;
+	int Pozycja_x = 60, Pozycja_y = 60, dlugosc = 0, Pozycja_Owocek_x = 0, Pozycja_Owocek_y = 0, Czas = 370, i = -1, Pozycja_Mina_x = 0, Pozycja_Mina_y = 0, kierunek=-1, wysokosc = 30, highscore =0, Current_highscore =0;
+	std::vector<int> Tabela_Min_x;
+	std::vector<int> Tabela_Min_y;
 	bool isEaten = true, gameover = false, bomba = false, turned = false, hardmode = false;
 	void zapauza();
-	void drawhs();
-	void drawborders();
+	void Draw_highscore();
+	void Draw_Borders();
 
 private:
 	void ComposeFrame();
@@ -48,18 +48,18 @@ private:
 	/*  User Functions              */
 	/********************************/
 private:
-	int zmienna1=0;
+	int Hardmode_border =0;
 	MainWindow& wnd;
 	Graphics gfx;
-	Powierzchnia gg = Powierzchnia("gameover.bmp");
+	Powierzchnia gameoverimage = Powierzchnia("gameover.bmp");
 	Powierzchnia mina = Powierzchnia("mina.bmp");
 	Powierzchnia pauza = Powierzchnia("pausa.bmp");
-	Powierzchnia p = Powierzchnia(30, 30);
-	Powierzchnia  l0= Powierzchnia("0.bmp");
-	Powierzchnia  l1 = Powierzchnia("1.bmp");
+	Powierzchnia owocek = Powierzchnia(30, 30);
+	Powierzchnia  cyfra1= Powierzchnia("0.bmp");
+	Powierzchnia  cyfra2 = Powierzchnia("1.bmp");
 	Powierzchnia hss = Powierzchnia("hs.bmp");
 	Powierzchnia anim = Powierzchnia("anim.bmp");
-	Sound ggg;
+	Sound gameoversound;
 	/********************************/
 	/*  User Variables              */
 	/********************************/
