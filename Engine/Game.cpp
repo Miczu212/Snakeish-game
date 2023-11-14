@@ -321,7 +321,7 @@ void Game::UpdateModel()
 	{
 		gameover = true;
 	}
-	if (kierunek == 1 && (p < 60 && Pozycja_x < 180)) // tu na stalo bo to sprawdza element gorny
+	if (kierunek == 1 && (p < 60 && Pozycja_x < 180)) // sa inty zamiast zmiennych poniewaz sprawdza element gorny
 	{
 		gameover = true;
 	}
@@ -342,7 +342,7 @@ void Game::UpdateModel()
 	{
 		gameover = true;
 	}
-	if (kierunek == 3 && p < 180 && Pozycja_y < 60) // tu na stalo bo to sprawdza element gorny
+	if (kierunek == 3 && p < 180 && Pozycja_y < 60) // sa inty zamiast zmiennych poniewaz sprawdza element gorny
 	{
 		gameover = true;
 	}
@@ -434,7 +434,7 @@ void Game::ComposeFrame() {
 				dlugosc = dlugosc + 30;
 			else
 				wysokosc = wysokosc + 30;
-			Czas = Czas - 20;
+			Czas = Czas - 20; // z kazdym zjedzonym owockiem zmienna czas siê zmniejsza, skutkuj¹c przyœpieszeniem rozgrywki
 			Pozycja_Owocek_x = (rand() % ((gfx.ScreenWidth - 30-Hardmode_border) / 30)) * 30;
 			Pozycja_Owocek_y = (rand() % ((gfx.ScreenHeight - 30-Hardmode_border) / 30)) * 30;
 			if (i == -1)
@@ -474,8 +474,17 @@ void Game::ComposeFrame() {
 			{
 				Pozycja_Mina_x = (rand() % 35) * 30;
 				Pozycja_Mina_y = (rand() % 25) * 30;
-				while ((Pozycja_Mina_x==Pozycja_Owocek_x && Pozycja_Mina_y==Pozycja_Owocek_y) || (Pozycja_Mina_x==Pozycja_x && Pozycja_Mina_y==Pozycja_y)|| (Pozycja_Mina_x == Pozycja_x-30 && Pozycja_Mina_y == Pozycja_y)|| (Pozycja_Mina_x == Pozycja_x && Pozycja_Mina_y == Pozycja_y-30)|| (Pozycja_Mina_x == Pozycja_x && Pozycja_Mina_y == Pozycja_y+30)||(Pozycja_Mina_x == Pozycja_x+30 && Pozycja_Mina_y == Pozycja_y))
+				int iterator3 = 0;
+			
+				while (																				//Upewnienie siê ¿e mina nie pojawi sie w:
+					(Pozycja_Mina_x==Pozycja_Owocek_x && Pozycja_Mina_y==Pozycja_Owocek_y) ||		//W owocku
+					(Pozycja_Mina_x==Pozycja_x && Pozycja_Mina_y==Pozycja_y)||						//-nas
+					(Pozycja_Mina_x == Pozycja_x-30 && Pozycja_Mina_y == Pozycja_y)||				//na lewo od nas
+					(Pozycja_Mina_x == Pozycja_x && Pozycja_Mina_y == Pozycja_y-30)||				//nad nami
+					(Pozycja_Mina_x == Pozycja_x && Pozycja_Mina_y == Pozycja_y+30+wysokosc)||		//pod nami
+					(Pozycja_Mina_x == Pozycja_x+30+dlugosc && Pozycja_Mina_y == Pozycja_y))		//na prawo od nas
 				{
+						
 
 						srand(time(NULL));
 						Pozycja_Mina_x = (rand() % 35) * 30;
@@ -527,7 +536,7 @@ void Game::ComposeFrame() {
 		{
 			while (iterator3 != dlugosc)
 			{
-				if (iterator3 + Pozycja_x == Pozycja_Owocek_x && Pozycja_y == Pozycja_Owocek_y)
+				if (iterator3 + Pozycja_x == Pozycja_Owocek_x && Pozycja_y == Pozycja_Owocek_y)	//sprawdzanie czy w danej klatce zjedzono owocek
 					isEaten = true;
 				iterator3 += 30;
 			}
@@ -579,7 +588,7 @@ void Game::ComposeFrame() {
 			{
 				if (bomba == true)
 				{
-					while (iterator1 < i - 1)
+					while (iterator1 < i - 1)	//sprawdzanie czy gracz znalazl sie w jakiejs z min
 					{
 						if (Pozycja_x == Tabela_Min_x[iterator1] && Pozycja_y+iterator3 == Tabela_Min_y[iterator1])
 						{
@@ -615,7 +624,7 @@ void Game::ComposeFrame() {
 			wysokosc = 30;
 		}
 		Powierzchnia gracz = Powierzchnia(dlugosc, wysokosc);
-		gfx.DrawSprite(Pozycja_Owocek_x, Pozycja_Owocek_y, owocek);	//rysowanie owockow
+		gfx.DrawSprite(Pozycja_Owocek_x, Pozycja_Owocek_y, owocek);	//rysowanie owocku
 		Sleep(Czas);
 		if (turned == true)
 		{
