@@ -45,17 +45,17 @@ void Game::zapauza()
 {
 	gfx.EndFrame();
 	gfx.BeginFrame();
-	gfx.DrawSprite(0, 0, pauza, 3);
+	gfx.DrawSprite(0, 0, Tablica_Powierzchni.pauza, 3);
 }
 void Game::Draw_Borders()
 {
-	for (int op = 0; op < 1080 - Hardmode_border; op++)
+	for (int op = 0; op < 1080 - Tablica_danych.getHardmodeborder(); op++)
 	{
-		gfx.PutPixel(op, 779 - Hardmode_border, Colors::Red);
+		gfx.PutPixel(op, 779 - Tablica_danych.getHardmodeborder(), Colors::Red);
 	}
-	for (int po = 0; po < 780 - Hardmode_border; po++)
+	for (int po = 0; po < 780 - Tablica_danych.getHardmodeborder(); po++)
 	{
-		gfx.PutPixel(1079 - Hardmode_border, po, Colors::Red);
+		gfx.PutPixel(1079 - Tablica_danych.getHardmodeborder(), po, Colors::Red);
 	}
 	for (int op = 0; op < 180; op++)
 	{
@@ -68,223 +68,223 @@ void Game::Draw_Borders()
 }
 void Game::Draw_highscore()
 {
-	gfx.DrawSprite(0, 0, hss, 3);
-	if (i == 0)
-		gfx.DrawSprite(0, 30, cyfra1, 3);
-	else if (i == 1)
+	gfx.DrawSprite(0, 0, Tablica_Powierzchni.hss, 3);
+	if (Tablica_danych.geti() == 0)
+		gfx.DrawSprite(0, 30, Tablica_Powierzchni.cyfra1, 3);
+	else if (Tablica_danych.geti() == 1)
 	{
-		highscore = 1;
+		Tablica_danych.sethighscore(1);
 
-		gfx.DrawSprite(0, 30, cyfra2, 3);
+		gfx.DrawSprite(0, 30, Tablica_Powierzchni.cyfra2, 3);
 	}
-	else if (i == 2)
+	else if (Tablica_danych.geti() == 2)
 	{
-		highscore = 2;
+		Tablica_danych.sethighscore(  2);
 		Powierzchnia  l2 = Powierzchnia("2.bmp");
 		gfx.DrawSprite(0, 30, l2, 3);
 	}
-	else if (i == 3)
+	else if (Tablica_danych.geti() == 3)
 	{
-		highscore = 3;
+		Tablica_danych.sethighscore(  3);
 		Powierzchnia  l3 = Powierzchnia("3.bmp");
 		gfx.DrawSprite(0, 30, l3, 3);
 	}
-	else if (i == 4) {
-		highscore = 4;
+	else if (Tablica_danych.geti() == 4) {
+		Tablica_danych.sethighscore(  4);
 		Powierzchnia  l4 = Powierzchnia("4.bmp");
 		gfx.DrawSprite(0, 30, l4, 3);
 	}
-	else if (i == 5)
+	else if (Tablica_danych.geti() == 5)
 	{
-		highscore = 5;
+		Tablica_danych.sethighscore(  5);
 		Powierzchnia  l5 = Powierzchnia("5.bmp");
 		gfx.DrawSprite(0, 30, l5, 3);
 	}
-	else if (i == 6) {
-		highscore = 6;
+	else if (Tablica_danych.geti() == 6) {
+		Tablica_danych.sethighscore(  6);
 		Powierzchnia  l6 = Powierzchnia("6.bmp");
 		gfx.DrawSprite(0, 30, l6, 3);
 	}
-	else if (i == 7)
+	else if (Tablica_danych.geti() == 7)
 	{
-		highscore = 7;
+		Tablica_danych.sethighscore(  7);
 		Powierzchnia  l7 = Powierzchnia("7.bmp");
 		gfx.DrawSprite(0, 30, l7, 3);
 	}
-	else if (i == 8)
+	else if (Tablica_danych.geti() == 8)
 	{
-		highscore = 8;
+		Tablica_danych.sethighscore(  8);
 		Powierzchnia  l8 = Powierzchnia("8.bmp");
 		gfx.DrawSprite(0, 30, l8, 3);
 	}
-	else if (i == 9)
+	else if (Tablica_danych.geti() == 9)
 	{
-		highscore = 9;
+		Tablica_danych.sethighscore(  9);
 		Powierzchnia  l9 = Powierzchnia("9.bmp");
 		gfx.DrawSprite(0, 30, l9, 3);
 	}
-	else if (i == 10)
+	else if (Tablica_danych.geti() == 10)
 	{
-		highscore = 10;
-		gfx.DrawSprite(0, 30, cyfra2, 3);
-		gfx.DrawSprite(30, 30, cyfra1, 3);
+		Tablica_danych.sethighscore(  10);
+		gfx.DrawSprite(0, 30, Tablica_Powierzchni.cyfra2, 3);
+		gfx.DrawSprite(30, 30, Tablica_Powierzchni.cyfra1, 3);
 	}
-	else if (i == 11)
+	else if (Tablica_danych.geti() == 11)
 	{
-		highscore = 11;
-		gfx.DrawSprite(0, 30, cyfra2, 3);
-		gfx.DrawSprite(30, 30, cyfra2, 3);
+		Tablica_danych.sethighscore(  11);
+		gfx.DrawSprite(0, 30, Tablica_Powierzchni.cyfra2, 3);
+		gfx.DrawSprite(30, 30, Tablica_Powierzchni.cyfra2, 3);
 	}
-	else if (i == 12)
+	else if (Tablica_danych.geti() == 12)
 	{
-		highscore = 12;
+		Tablica_danych.sethighscore(  12);
 		Powierzchnia  l2 = Powierzchnia("2.bmp");
-		gfx.DrawSprite(0, 30, cyfra2, 3);
+		gfx.DrawSprite(0, 30, Tablica_Powierzchni.cyfra2, 3);
 		gfx.DrawSprite(30, 30, l2, 3);
 	}
-	else if (i == 13)
+	else if (Tablica_danych.geti() == 13)
 	{
-		highscore = 13;
+		Tablica_danych.sethighscore(  13);
 		Powierzchnia  l3 = Powierzchnia("3.bmp");
-		gfx.DrawSprite(0, 30, cyfra2, 3);
+		gfx.DrawSprite(0, 30, Tablica_Powierzchni.cyfra2, 3);
 		gfx.DrawSprite(30, 30, l3, 3);
 	}
-	else if (i == 14)
+	else if (Tablica_danych.geti() == 14)
 	{
-		highscore = 14;
+		Tablica_danych.sethighscore(  14);
 		Powierzchnia  l4 = Powierzchnia("4.bmp");
-		gfx.DrawSprite(0, 30, cyfra2, 3);
+		gfx.DrawSprite(0, 30, Tablica_Powierzchni.cyfra2, 3);
 		gfx.DrawSprite(30, 30, l4, 3);
 	}
-	else if (i == 15)
+	else if (Tablica_danych.geti() == 15)
 	{
-		highscore = 15;
+		Tablica_danych.sethighscore(  15);
 		Powierzchnia  l5 = Powierzchnia("5.bmp");
-		gfx.DrawSprite(0, 30, cyfra2, 3);
+		gfx.DrawSprite(0, 30, Tablica_Powierzchni.cyfra2, 3);
 		gfx.DrawSprite(30, 30, l5, 3);
 	}
-	else if (i == 16)
+	else if (Tablica_danych.geti() == 16)
 	{
-		highscore = 16;
+		Tablica_danych.sethighscore(  16);
 		Powierzchnia  l6 = Powierzchnia("6.bmp");
-		gfx.DrawSprite(0, 30, cyfra2, 3);
+		gfx.DrawSprite(0, 30, Tablica_Powierzchni.cyfra2, 3);
 		gfx.DrawSprite(30, 30, l6, 3);
 	}
-	else if (i == 17)
+	else if (Tablica_danych.geti() == 17)
 	{
-		highscore = 17;
+		Tablica_danych.sethighscore(  17);
 		Powierzchnia  l7 = Powierzchnia("7.bmp");
-		gfx.DrawSprite(0, 30, cyfra2, 3);
+		gfx.DrawSprite(0, 30, Tablica_Powierzchni.cyfra2, 3);
 		gfx.DrawSprite(0, 30, l7, 3);
 	}
 
-	gfx.DrawSprite(0, 0, hss, 3);
-	if (Current_highscore == 0)
-		gfx.DrawSprite(120, 2, cyfra1, 3);
-	else if (Current_highscore == 1)
+	gfx.DrawSprite(0, 0, Tablica_Powierzchni.hss, 3);
+	if (Tablica_danych.getcurrenthighscore( ) == 0)
+		gfx.DrawSprite(120, 2, Tablica_Powierzchni.cyfra1, 3);
+	else if (Tablica_danych.getcurrenthighscore( ) == 1)
 	{
 
 
-		gfx.DrawSprite(120, 2, cyfra2, 3);
+		gfx.DrawSprite(120, 2, Tablica_Powierzchni.cyfra2, 3);
 	}
-	else if (Current_highscore == 2)
+	else if (Tablica_danych.getcurrenthighscore( ) == 2)
 	{
 
 		Powierzchnia  l2 = Powierzchnia("2.bmp");
 		gfx.DrawSprite(120, 2, l2, 3);
 	}
-	else if (Current_highscore == 3)
+	else if (Tablica_danych.getcurrenthighscore( ) == 3)
 	{
 
 		Powierzchnia  l3 = Powierzchnia("3.bmp");
 		gfx.DrawSprite(120, 2, l3, 3);
 	}
-	else if (Current_highscore == 4) {
+	else if (Tablica_danych.getcurrenthighscore( ) == 4) {
 
 		Powierzchnia  l4 = Powierzchnia("4.bmp");
 		gfx.DrawSprite(120, 2, l4, 3);
 	}
-	else if (Current_highscore == 5)
+	else if (Tablica_danych.getcurrenthighscore( ) == 5)
 	{
 
 		Powierzchnia  l5 = Powierzchnia("5.bmp");
 		gfx.DrawSprite(120, 2, l5, 3);
 	}
-	else if (Current_highscore == 6) {
+	else if (Tablica_danych.getcurrenthighscore( ) == 6) {
 
 		Powierzchnia  l6 = Powierzchnia("6.bmp");
 		gfx.DrawSprite(120, 2, l6, 3);
 	}
-	else if (Current_highscore == 7)
+	else if (Tablica_danych.getcurrenthighscore( ) == 7)
 	{
 
 		Powierzchnia  l7 = Powierzchnia("7.bmp");
 		gfx.DrawSprite(120, 2, l7, 3);
 	}
-	else if (Current_highscore == 8)
+	else if (Tablica_danych.getcurrenthighscore( ) == 8)
 	{
 
 		Powierzchnia  l8 = Powierzchnia("8.bmp");
 		gfx.DrawSprite(120, 2, l8, 3);
 	}
-	else if (Current_highscore == 9)
+	else if (Tablica_danych.getcurrenthighscore( ) == 9)
 	{
 
 		Powierzchnia  l9 = Powierzchnia("9.bmp");
 		gfx.DrawSprite(120, 2, l9, 3);
 	}
-	else if (Current_highscore == 10)
+	else if (Tablica_danych.getcurrenthighscore( ) == 10)
 	{
 
-		gfx.DrawSprite(120, 2, cyfra2, 3);
-		gfx.DrawSprite(150, 2, cyfra1, 3);
+		gfx.DrawSprite(120, 2, Tablica_Powierzchni.cyfra2, 3);
+		gfx.DrawSprite(150, 2, Tablica_Powierzchni.cyfra1, 3);
 	}
-	else if (Current_highscore == 11)
+	else if (Tablica_danych.getcurrenthighscore( ) == 11)
 	{
 
-		gfx.DrawSprite(120, 2, cyfra2, 3);
-		gfx.DrawSprite(150, 2, cyfra2, 3);
+		gfx.DrawSprite(120, 2, Tablica_Powierzchni.cyfra2, 3);
+		gfx.DrawSprite(150, 2, Tablica_Powierzchni.cyfra2, 3);
 	}
-	else if (Current_highscore == 12)
+	else if (Tablica_danych.getcurrenthighscore( ) == 12)
 	{
 
 		Powierzchnia  l2 = Powierzchnia("2.bmp");
-		gfx.DrawSprite(120, 2, cyfra2, 3);
+		gfx.DrawSprite(120, 2, Tablica_Powierzchni.cyfra2, 3);
 		gfx.DrawSprite(150, 2, l2, 3);
 	}
-	else if (Current_highscore == 13)
+	else if (Tablica_danych.getcurrenthighscore( ) == 13)
 	{
 
 		Powierzchnia  l3 = Powierzchnia("3.bmp");
-		gfx.DrawSprite(120, 2, cyfra2, 3);
+		gfx.DrawSprite(120, 2, Tablica_Powierzchni.cyfra2, 3);
 		gfx.DrawSprite(150, 2, l3, 3);
 	}
-	else if (Current_highscore == 14)
+	else if (Tablica_danych.getcurrenthighscore( ) == 14)
 	{
 
 		Powierzchnia  l4 = Powierzchnia("4.bmp");
-		gfx.DrawSprite(120, 2, cyfra2, 3);
+		gfx.DrawSprite(120, 2, Tablica_Powierzchni.cyfra2, 3);
 		gfx.DrawSprite(150, 2, l4, 3);
 	}
-	else if (Current_highscore == 15)
+	else if (Tablica_danych.getcurrenthighscore( ) == 15)
 	{
 
 		Powierzchnia  l5 = Powierzchnia("5.bmp");
-		gfx.DrawSprite(120, 2, cyfra2, 3);
+		gfx.DrawSprite(120, 2, Tablica_Powierzchni.cyfra2, 3);
 		gfx.DrawSprite(150, 2, l5, 3);
 	}
-	else if (Current_highscore == 16)
+	else if (Tablica_danych.getcurrenthighscore( ) == 16)
 	{
 
 		Powierzchnia  l6 = Powierzchnia("6.bmp");
-		gfx.DrawSprite(120, 2, cyfra2, 3);
+		gfx.DrawSprite(120, 2, Tablica_Powierzchni.cyfra2, 3);
 		gfx.DrawSprite(150, 2, l6, 3);
 	}
-	else if (Current_highscore == 17)
+	else if (Tablica_danych.getcurrenthighscore( ) == 17)
 	{
 
 		Powierzchnia  l7 = Powierzchnia("7.bmp");
-		gfx.DrawSprite(120, 2, cyfra2, 3);
+		gfx.DrawSprite(120, 2, Tablica_Powierzchni.cyfra2, 3);
 		gfx.DrawSprite(150, 2, l7, 3);
 	}
 }
@@ -293,100 +293,96 @@ void Game::UpdateModel()
 
 	if (GetAsyncKeyState(0x48))
 	{
-		hardmode = true;
+		Tablica_danych.sethardmode(true);
 	}
 	else if (GetAsyncKeyState(VK_UP))
 	{
-		kierunek = 1;
+		Tablica_danych.setkierunek(1);
 	}
 
 	else if (GetAsyncKeyState(VK_DOWN))
 	{
-		kierunek = 2;
+		Tablica_danych.setkierunek(2);
 	}
 
 	else if (GetAsyncKeyState(VK_LEFT))
 	{
-		kierunek = 3;
+		Tablica_danych.setkierunek(3);
 
 	}
 
 	else if (GetAsyncKeyState(VK_RIGHT))
 	{
-		kierunek = 4;
+		Tablica_danych.setkierunek(4);
 
 	}
-	int p = Pozycja_y - 30;
-	if (kierunek == 1 && p < 0)
+	int p = Tablica_danych.getPozy() - 30;
+	if (Tablica_danych.getkierunek() == 1 && p < 0)
 	{
-		gameover = true;
+		Tablica_danych.setgameover(true);
 	}
-	if (kierunek == 1 && (p < 60 && Pozycja_x < 180)) // sa inty zamiast zmiennych poniewaz sprawdza element gorny
+	if (Tablica_danych.getkierunek() == 1 && (p < 60 && Tablica_danych.getPozx() < 180)) // sa inty zamiast zmiennych poniewaz sprawdza element gorny
 	{
-		gameover = true;
+		Tablica_danych.setgameover(true);
 	}
-	if (turned == true)
+	if (Tablica_danych.getturned() == true)
 	{
-		p = Pozycja_y + wysokosc;
+		p = Tablica_danych.getPozy() + Tablica_danych.getwysokosc();
 	}
 	else {
 
-		p = Pozycja_y + 30;
+		p = Tablica_danych.getPozy() + 30;
 	}
-	if (p > 770 - Hardmode_border && kierunek == 2)
+	if (p > 770 - Tablica_danych.getHardmodeborder() && Tablica_danych.getkierunek() == 2)
 	{
-		gameover = true;
+		Tablica_danych.setgameover(true);
 	}
-	p = Pozycja_x - 30;
-	if (kierunek == 3 && p < 0)
+	p = Tablica_danych.getPozx() - 30;
+	if (Tablica_danych.getkierunek() == 3 && p < 0)
 	{
-		gameover = true;
+		Tablica_danych.setgameover(true);
 	}
-	if (kierunek == 3 && p < 180 && Pozycja_y < 60) // sa inty zamiast zmiennych poniewaz sprawdza element gorny
+	if (Tablica_danych.getkierunek() == 3 && p < 180 && Tablica_danych.getPozy() < 60) // sa inty zamiast zmiennych poniewaz sprawdza element gorny
 	{
-		gameover = true;
+		Tablica_danych.setgameover(true);
 	}
-	p = dlugosc + Pozycja_x + 30;
-	if (kierunek == 4 && p >= gfx.ScreenWidth - Hardmode_border)
+	p = Tablica_danych.getdlugosc() + Tablica_danych.getPozx() + 30;
+	if (Tablica_danych.getkierunek() == 4 && p >= gfx.ScreenWidth - Tablica_danych.getHardmodeborder())
 
 	{
-		gameover = true;
-	}
-	if (GetAsyncKeyState(VK_UP))
-	{
-		kierunek = 1;
+		Tablica_danych.setgameover(true);
 	}
 	if (GetAsyncKeyState(0x45))
 	{
-		turned = !turned;
+		Tablica_danych.setturned(!Tablica_danych.getturned());
 		int temp;
-		temp = dlugosc;
-		dlugosc = wysokosc;
-		wysokosc = temp;
-		if (Pozycja_y + wysokosc > 770)
+		temp = Tablica_danych.getdlugosc();
+		Tablica_danych.setdlugosc(Tablica_danych.getwysokosc());
+		Tablica_danych.setwysokosc(temp);
+		if (Tablica_danych.getPozy() + Tablica_danych.getwysokosc() > 770)
 		{
-			gameover = true;
+			Tablica_danych.setgameover(true);
 		}
-		else if (Pozycja_x + dlugosc > 1060)
+		else if (Tablica_danych.getPozx() + Tablica_danych.getdlugosc() > 1060)
 		{
-			gameover = true;
+			Tablica_danych.setgameover(true);
 		}
 
 	}
 	else if (GetAsyncKeyState(0x51))
 	{
-		turned = !turned;
+		Tablica_danych.setturned(!Tablica_danych.getturned());
 		int temp;
-		temp = dlugosc;
-		dlugosc = wysokosc;
-		wysokosc = temp;
-		if (Pozycja_y + wysokosc > 770)
+		temp = Tablica_danych.getdlugosc();
+		Tablica_danych.setdlugosc(Tablica_danych.getwysokosc());
+			Tablica_danych.setwysokosc(temp);
+		if (Tablica_danych.getPozy() + Tablica_danych.getwysokosc() > 770)
 		{
-			gameover = true;
+			Tablica_danych.setgameover(true);
 		}
-		else if (Pozycja_x + dlugosc > 1060)
+		else if (Tablica_danych.getPozx() + Tablica_danych.getdlugosc() > 1060)
 		{
-			gameover = true;
+			Tablica_danych.setgameover(true);
 		}
 	}
 
@@ -399,107 +395,106 @@ void Game::ComposeFrame() {
 	bool czydalrade = false;
 	srand(time(NULL));
 	int iterator1 = 0;
-		if (kierunek == 1)
+		if (Tablica_danych.getkierunek() == 1)
 		{
-			Pozycja_y = Pozycja_y - 30;
+			Tablica_danych.setPozy(Tablica_danych.getPozy() - 30);
 		}
 
-		else if (kierunek == 2)
+		else if (Tablica_danych.getkierunek() == 2)
 		{
-			Pozycja_y = Pozycja_y + 30;
+			Tablica_danych.setPozy(Tablica_danych.getPozy() + 30);
 		}
-		else if (kierunek == 4)
+		else if (Tablica_danych.getkierunek() == 4)
 		{
-			Pozycja_x = Pozycja_x + 30;
+			Tablica_danych.setPozx(Tablica_danych.getPozx() + 30);
 		}
-		else if (kierunek == 3)
+		else if (Tablica_danych.getkierunek() == 3)
 		{
-			Pozycja_x = Pozycja_x - 30;
+			Tablica_danych.setPozx(Tablica_danych.getPozx() - 30);
 		}											//ponizej rysowanie czerwonych granic
 		Draw_Borders();
 		
-		while (iterator1 < i)	//rysowanie min
+		while (iterator1 < Tablica_danych.geti())	//rysowanie min
 		{
-			gfx.DrawSprite(Tabela_Min_x[iterator1], Tabela_Min_y[iterator1], mina, 3);
+			gfx.DrawSprite(Tabela_Min_x[iterator1], Tabela_Min_y[iterator1], Tablica_Powierzchni.mina, 3);
 			iterator1++;
 		}
 		iterator1 = 0;
 
 		
-		if (isEaten == true)
-		{	if(i==-1)
+		if (Tablica_danych.getIsEaten() == true)
+		{	if(Tablica_danych.geti()==-1)
 		{
 		}
-			if (turned == false)
-				dlugosc = dlugosc + 30;
+			if (Tablica_danych.getturned() == false)
+				Tablica_danych.setdlugosc(Tablica_danych.getdlugosc() + 30);
 			else
-				wysokosc = wysokosc + 30;
-			Czas = Czas - 20; // z kazdym zjedzonym owockiem zmienna czas siê zmniejsza, skutkuj¹c przyœpieszeniem rozgrywki
-			Pozycja_Owocek_x = (rand() % ((gfx.ScreenWidth - 30-Hardmode_border) / 30)) * 30;
-			Pozycja_Owocek_y = (rand() % ((gfx.ScreenHeight - 30-Hardmode_border) / 30)) * 30;
-			if (i == -1)
+				Tablica_danych.setwysokosc(Tablica_danych.getwysokosc() + 30);
+			Tablica_danych.setczas(Tablica_danych.getczas() - 20);  // z kazdym zjedzonym owockiem zmienna Tablica_danych.getczas() siê zmniejsza, skutkuj¹c przyœpieszeniem rozgrywki
+			Tablica_danych.setPozycjaOwocekx((rand() % ((gfx.ScreenWidth - 30 - Tablica_danych.getHardmodeborder()) / 30)) * 30); 
+			Tablica_danych.setPozycjaOwoceky((rand() % ((gfx.ScreenHeight - 30 - Tablica_danych.getHardmodeborder()) / 30)) * 30);
+			if (Tablica_danych.geti() == -1)
 			{
-				Pozycja_Owocek_x = (rand() % 10) * 30;
-				Pozycja_Owocek_y = (rand() % 10) * 30;
+				Tablica_danych.setPozycjaOwocekx((rand() % 10) * 30);
+				Tablica_danych.setPozycjaOwoceky((rand() % 10) * 30);
 			}
-			while (Pozycja_Owocek_y<60)
+			while (Tablica_danych.getPozycjaOwoceky()<60)
 			{
-				if (Pozycja_Owocek_x < 180) {
+				if (Tablica_danych.getPozycjaOwocekx() < 180) {
 					
 					srand(time(NULL));
-					Pozycja_Owocek_y = (rand() % 26) * 30;
-					if (i == -1)
+					Tablica_danych.setPozycjaOwoceky((rand() % 26) * 30);
+					if (Tablica_danych.geti() == -1)
 					{
-						Pozycja_Owocek_y = (rand() % 10) * 30;
+						Tablica_danych.setPozycjaOwoceky((rand() % 10) * 30);
 					}
 				}
 				else
 					break;
 				}
-			if (hardmode == true)
+			if (Tablica_danych.gethardmode() == true)
 			{
-				Hardmode_border += 15;
+				Tablica_danych.setHardmodeborder(Tablica_danych.getHardmodeborder()+15);
 			}
-			i++;
-			isEaten = false;
-			bomba = true;
+			Tablica_danych.seti(Tablica_danych.geti()+1);
+			Tablica_danych.setIsEaten(false);
+			Tablica_danych.setbomba(true);
 			Tabela_Min_x.clear();
 			Tabela_Min_y.clear();
 		}
-		if (bomba == true)
+		if (Tablica_danych.getbomba() == true)
 		{
 			int iterator2 = 0;
-			bomba = false;
-			while (iterator1 < i)
+			Tablica_danych.setbomba(false);
+			while (iterator1 < Tablica_danych.geti())
 			{
-				Pozycja_Mina_x = (rand() % 35) * 30;
-				Pozycja_Mina_y = (rand() % 25) * 30;
+				Tablica_danych.setPozMina_x((rand() % 35) * 30);
+				Tablica_danych.setPozMinay((rand() % 25) * 30);
 				int iterator3 = 0;
-			
 				while (																				//Upewnienie siê ¿e mina nie pojawi sie w:
-					(Pozycja_Mina_x==Pozycja_Owocek_x && Pozycja_Mina_y==Pozycja_Owocek_y) ||		//W owocku
-					(Pozycja_Mina_x==Pozycja_x && Pozycja_Mina_y==Pozycja_y)||						//-nas
-					(Pozycja_Mina_x == Pozycja_x-30 && Pozycja_Mina_y == Pozycja_y)||				//na lewo od nas
-					(Pozycja_Mina_x == Pozycja_x && Pozycja_Mina_y == Pozycja_y-30)||				//nad nami
-					(Pozycja_Mina_x == Pozycja_x && Pozycja_Mina_y == Pozycja_y+30+wysokosc)||		//pod nami
-					(Pozycja_Mina_x == Pozycja_x+30+dlugosc && Pozycja_Mina_y == Pozycja_y))		//na prawo od nas
+					(Tablica_danych.getPozMina_x()==Tablica_danych.getPozycjaOwocekx() && Tablica_danych.getPozMinay()==Tablica_danych.getPozycjaOwoceky()) ||		//W owocku
+					(Tablica_danych.getPozMina_x()==Tablica_danych.getPozx() && Tablica_danych.getPozMinay()== Tablica_danych.getPozy())||						//-nas
+					(Tablica_danych.getPozMina_x() == Tablica_danych.getPozx()-30 && Tablica_danych.getPozMinay() == Tablica_danych.getPozy())||				//na lewo od nas
+					(Tablica_danych.getPozMina_x() == Tablica_danych.getPozx() && Tablica_danych.getPozMinay() == Tablica_danych.getPozy() -30)||				//nad nami
+					(Tablica_danych.getPozMina_x() == Tablica_danych.getPozx() && Tablica_danych.getPozMinay() == Tablica_danych.getPozy() +30+Tablica_danych.getwysokosc())||		//pod nami
+					(Tablica_danych.getPozMina_x() == Tablica_danych.getPozx()+30+Tablica_danych.getdlugosc() && Tablica_danych.getPozMinay() == Tablica_danych.getPozy()))		//na prawo od nas
 				{
 						
 
 						srand(time(NULL));
-						Pozycja_Mina_x = (rand() % 35) * 30;
-						Pozycja_Mina_y = (rand() % 25) * 30;
+						Tablica_danych.setPozMina_x((rand() % 35) * 30);
+						Tablica_danych.setPozMinay((rand() % 25) * 30);
 
 					}
 				
 
-				Tabela_Min_x.push_back(Pozycja_Mina_x);
-				Tabela_Min_y.push_back(Pozycja_Mina_y);
-				if (turned == false)
+				Tabela_Min_x.push_back(Tablica_danych.getPozMina_x());
+				Tabela_Min_y.push_back(Tablica_danych.getPozMinay());
+				if (Tablica_danych.getturned() == false)
 				{
-					while (iterator2 != dlugosc)
+					while (iterator2 != Tablica_danych.getdlugosc())
 					{
-						if (Pozycja_Mina_x == Pozycja_x + iterator2 && Pozycja_Mina_y == Pozycja_y)
+						if (Tablica_danych.getPozMina_x() == Tablica_danych.getPozx() + iterator2 && Tablica_danych.getPozMinay() == Tablica_danych.getPozy())
 						{
 							Tabela_Min_x.pop_back();
 							Tabela_Min_y.pop_back();
@@ -512,9 +507,9 @@ void Game::ComposeFrame() {
 				}
 				else
 				{
-					while (iterator2 != wysokosc)
+					while (iterator2 != Tablica_danych.getwysokosc())
 					{
-						if (Pozycja_Mina_x == Pozycja_x && Pozycja_Mina_y == Pozycja_y + iterator2)
+						if (Tablica_danych.getPozMina_x() == Tablica_danych.getPozx() && Tablica_danych.getPozMinay() == Tablica_danych.getPozy() + iterator2)
 						{
 							Tabela_Min_x.pop_back();
 							Tabela_Min_y.pop_back();
@@ -532,25 +527,25 @@ void Game::ComposeFrame() {
 			czydalrade = true;
 		}
 		int iterator3 = 0;
-		if (turned == false)
+		if (Tablica_danych.getturned() == false)
 		{
-			while (iterator3 != dlugosc)
+			while (iterator3 != Tablica_danych.getdlugosc())
 			{
-				if (iterator3 + Pozycja_x == Pozycja_Owocek_x && Pozycja_y == Pozycja_Owocek_y)	//sprawdzanie czy w danej klatce zjedzono owocek
-					isEaten = true;
+				if (iterator3 + Tablica_danych.getPozx() == Tablica_danych.getPozycjaOwocekx() && Tablica_danych.getPozy() == Tablica_danych.getPozycjaOwoceky())	//sprawdzanie czy w danej klatce zjedzono owocek
+					Tablica_danych.setIsEaten(true);
 				iterator3 += 30;
 			}
 			iterator3 = 0;
-			while (iterator3 != dlugosc)
+			while (iterator3 != Tablica_danych.getdlugosc())
 			{
-				if (bomba == true)
+				if (Tablica_danych.getbomba() == true)
 				{
-					while (iterator1 < i - 1)
+					while (iterator1 < Tablica_danych.geti() - 1)
 					{
-						if (Pozycja_x + iterator3 == Tabela_Min_x[iterator1] && Pozycja_y == Tabela_Min_y[iterator1])
+						if (Tablica_danych.getPozx() + iterator3 == Tabela_Min_x[iterator1] && Tablica_danych.getPozy() == Tabela_Min_y[iterator1])
 						{
 							if (czydalrade == false)
-								gameover = true;
+								Tablica_danych.setgameover(true);
 							czydalrade = false;
 
 						}
@@ -561,11 +556,11 @@ void Game::ComposeFrame() {
 				}
 				else
 				{
-					while (iterator1 < i)
+					while (iterator1 < Tablica_danych.geti())
 					{
-						if (Pozycja_x + iterator3 == Tabela_Min_x[iterator1] && Pozycja_y == Tabela_Min_y[iterator1])
+						if (Tablica_danych.getPozx() + iterator3 == Tabela_Min_x[iterator1] && Tablica_danych.getPozy() == Tabela_Min_y[iterator1])
 						{
-							gameover = true;
+							Tablica_danych.setgameover(true);
 
 						}
 						iterator1++;
@@ -577,23 +572,23 @@ void Game::ComposeFrame() {
 		}
 		else
 		{
-			while (iterator3 != wysokosc)
+			while (iterator3 != Tablica_danych.getwysokosc())
 			{
-				if (Pozycja_x == Pozycja_Owocek_x && Pozycja_y+iterator3 == Pozycja_Owocek_y)
-					isEaten = true;
+				if (Tablica_danych.getPozx() == Tablica_danych.getPozycjaOwocekx() && Tablica_danych.getPozy() +iterator3 == Tablica_danych.getPozycjaOwoceky())
+					Tablica_danych.setIsEaten(true);
 				iterator3 += 30;
 			}
 			iterator3 = 0;
-			while (iterator3 != wysokosc)
+			while (iterator3 != Tablica_danych.getwysokosc())
 			{
-				if (bomba == true)
+				if (Tablica_danych.getbomba() == true)
 				{
-					while (iterator1 < i - 1)	//sprawdzanie czy gracz znalazl sie w jakiejs z min
+					while (iterator1 < Tablica_danych.geti() - 1)	//sprawdzanie czy gracz znalazl sie w jakiejs z min
 					{
-						if (Pozycja_x == Tabela_Min_x[iterator1] && Pozycja_y+iterator3 == Tabela_Min_y[iterator1])
+						if (Tablica_danych.getPozx() == Tabela_Min_x[iterator1] && Tablica_danych.getPozy() +iterator3 == Tabela_Min_y[iterator1])
 						{
 							if (czydalrade == false)
-								gameover = true;
+								Tablica_danych.setgameover(true);
 							czydalrade = false;
 
 						}
@@ -604,11 +599,11 @@ void Game::ComposeFrame() {
 				}
 				else
 				{
-					while (iterator1 < i)
+					while (iterator1 < Tablica_danych.geti())
 					{
-						if (Pozycja_x == Tabela_Min_x[iterator1] && Pozycja_y+iterator3 == Tabela_Min_y[iterator1])
+						if (Tablica_danych.getPozx() == Tabela_Min_x[iterator1] && Tablica_danych.getPozy() + iterator3 == Tabela_Min_y[iterator1])
 						{
-							gameover = true;
+							Tablica_danych.setgameover(true);
 
 						}
 						iterator1++;
@@ -618,47 +613,46 @@ void Game::ComposeFrame() {
 				}
 			}
 		}
-		if (dlugosc == 0 || wysokosc == 0)
+		if (Tablica_danych.getdlugosc() == 0 || Tablica_danych.getwysokosc() == 0)
 		{
-			dlugosc = 30;
-			wysokosc = 30;
+			Tablica_danych.setdlugosc(30);
+			Tablica_danych.setwysokosc(30);
 		}
-		Powierzchnia gracz = Powierzchnia(dlugosc, wysokosc);
-		gfx.DrawSprite(Pozycja_Owocek_x, Pozycja_Owocek_y, owocek);	//rysowanie owocku
-		Sleep(Czas);
-		if (turned == true)
+		Powierzchnia gracz = Powierzchnia(Tablica_danych.getdlugosc(), Tablica_danych.getwysokosc());
+		gfx.DrawSprite(Tablica_danych.getPozycjaOwocekx(), Tablica_danych.getPozycjaOwoceky(), Tablica_Powierzchni.owocek);	//rysowanie owocku
+		Sleep(Tablica_danych.getczas());
+		if (Tablica_danych.getturned() == true)
 		{
 
 		}
 		
-		if (gameover == true)
+		if (Tablica_danych.getgameover() == true)
 		{
-		
-			hardmode = false;
+			Tablica_danych.sethardmode(false);
+			Tablica_danych.setHardmodeborder(0);
+			Tablica_danych.setgameover(false);
 			gameoversound.Play();
-			Hardmode_border = 0;
-			gfx.DrawSprite(0, 0, gameoverimage, 3);
-			gameover = false;
-			if (turned == false)
-				dlugosc = 0;
+			gfx.DrawSprite(0, 0, Tablica_Powierzchni.gameoverimage, 3);
+			if (Tablica_danych.getturned() == false)
+				Tablica_danych.setdlugosc(0);
 			else
-				wysokosc = 0;
-			isEaten = true;
-			Pozycja_x = 60;
-			Pozycja_y = 60;
-			Czas = 370;
+				Tablica_danych.setwysokosc(0);
+			Tablica_danych.setIsEaten(true);
+			Tablica_danych.setPozx(60);
+			Tablica_danych.setPozy(60);
+			Tablica_danych.setczas(370);
 			iterator1 = 0;
-			i = -1;
+			Tablica_danych.seti(-1);
 			Tabela_Min_x.clear();
 			Tabela_Min_y.clear();
-			bomba = false;
-			kierunek = -1;
-			turned = false;
-			if (highscore > Current_highscore)
-				Current_highscore = highscore;
+			Tablica_danych.setbomba(false);
+			Tablica_danych.setkierunek(-1);
+			Tablica_danych.setturned(false);
+			if (Tablica_danych.gethighscore() > Tablica_danych.getcurrenthighscore())
+				Tablica_danych.setcurrenthighscore(Tablica_danych.gethighscore());
 			else;
 		}
-		gfx.DrawSprite(Pozycja_x, Pozycja_y, gracz);	//nasz gracz
+		gfx.DrawSprite(Tablica_danych.getPozx(), Tablica_danych.getPozy(), gracz);	//nasz gracz
 		Draw_highscore();
 
 			

@@ -26,6 +26,8 @@
 #include "Powierzchnia.h"
 #include<vector>
 #include"Sound.h"
+#include"Powierzchniaholder.h"
+#include"Dataholder.h"
 class Game
 {
 public:
@@ -33,32 +35,22 @@ public:
 	Game( const Game& ) = delete;
 	Game& operator=( const Game& ) = delete;
 	void Go();
-	int Pozycja_x = 60, Pozycja_y = 60, dlugosc = 0, Pozycja_Owocek_x = 0, Pozycja_Owocek_y = 0, Czas = 370, i = -1, Pozycja_Mina_x = 0, Pozycja_Mina_y = 0, kierunek=-1, wysokosc = 30, highscore =0, Current_highscore =0;
-	std::vector<int> Tabela_Min_x;
-	std::vector<int> Tabela_Min_y;
-	bool isEaten = true, gameover = false, bomba = false, turned = false, hardmode = false;
+public:
+	void ComposeFrame();
+	void UpdateModel();
 	void zapauza();
 	void Draw_highscore();
 	void Draw_Borders();
-
-private:
-	void ComposeFrame();
-	void UpdateModel();
 	/********************************/
 	/*  User Functions              */
 	/********************************/
 private:
-	int Hardmode_border =0;
+	std::vector<int> Tabela_Min_x;
+	std::vector<int> Tabela_Min_y;
+	Dataholder Tablica_danych;
 	MainWindow& wnd;
 	Graphics gfx;
-	Powierzchnia gameoverimage = Powierzchnia("gameover.bmp");
-	Powierzchnia mina = Powierzchnia("mina.bmp");
-	Powierzchnia pauza = Powierzchnia("pausa.bmp");
-	Powierzchnia owocek = Powierzchnia(30, 30);
-	Powierzchnia  cyfra1= Powierzchnia("0.bmp");
-	Powierzchnia  cyfra2 = Powierzchnia("1.bmp");
-	Powierzchnia hss = Powierzchnia("hs.bmp");
-	Powierzchnia anim = Powierzchnia("anim.bmp");
+	Powierzchniaholder Tablica_Powierzchni;
 	Sound gameoversound;
 	/********************************/
 	/*  User Variables              */
