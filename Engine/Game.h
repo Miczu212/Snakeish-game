@@ -36,15 +36,27 @@ public:
 	Game& operator=( const Game& ) = delete;
 	void Go();
 public:
+	void UpdateOnEaten();
+	void OnGameover();
+	void ComposeEndFrame();
+	void Move();
 	void ComposeFrame();
 	void UpdateModel();
+	void RandomizeOwocekLocation();
+	void Draw_Mines();
+	void RandomizeMineLocation();
 	void zapauza();
 	void Draw_highscore();
+	void Turn();
+	void IsitGameover();
 	void Draw_Borders();
+	void GetDirection();
 	/********************************/
 	/*  User Functions              */
 	/********************************/
 private:
+	bool czydalrade = false;
+	int iterator1 = 0; int iterator3 = 0;
 	std::vector<int> Tabela_Min_x;
 	std::vector<int> Tabela_Min_y;
 	Dataholder Tablica_danych;

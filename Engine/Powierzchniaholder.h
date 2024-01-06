@@ -12,6 +12,7 @@ public:
 	Powierzchnia  cyfra2 = Powierzchnia("1.bmp");
 	Powierzchnia hss = Powierzchnia("hs.bmp");
 	Powierzchnia anim = Powierzchnia("anim.bmp");
+	Powierzchnia gracz;
 private:
 
 };

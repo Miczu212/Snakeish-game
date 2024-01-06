@@ -66,6 +66,34 @@ void Game::Draw_Borders()
 		gfx.PutPixel(181, po, Colors::Red);
 	}
 }
+void Game::GetDirection()
+{
+	if (GetAsyncKeyState(0x48))
+	{
+		Tablica_danych.sethardmode(true);
+	}
+	else if (GetAsyncKeyState(VK_UP))
+	{
+		Tablica_danych.setkierunek(1);
+	}
+
+	else if (GetAsyncKeyState(VK_DOWN))
+	{
+		Tablica_danych.setkierunek(2);
+	}
+
+	else if (GetAsyncKeyState(VK_LEFT))
+	{
+		Tablica_danych.setkierunek(3);
+
+	}
+
+	else if (GetAsyncKeyState(VK_RIGHT))
+	{
+		Tablica_danych.setkierunek(4);
+
+	}
+}
 void Game::Draw_highscore()
 {
 	gfx.DrawSprite(0, 0, Tablica_Powierzchni.hss, 3);
@@ -288,34 +316,44 @@ void Game::Draw_highscore()
 		gfx.DrawSprite(150, 2, l7, 3);
 	}
 }
-void Game::UpdateModel()
+void Game::Turn()
 {
-
-	if (GetAsyncKeyState(0x48))
+	if (GetAsyncKeyState(0x45))
 	{
-		Tablica_danych.sethardmode(true);
-	}
-	else if (GetAsyncKeyState(VK_UP))
-	{
-		Tablica_danych.setkierunek(1);
-	}
-
-	else if (GetAsyncKeyState(VK_DOWN))
-	{
-		Tablica_danych.setkierunek(2);
-	}
-
-	else if (GetAsyncKeyState(VK_LEFT))
-	{
-		Tablica_danych.setkierunek(3);
+		Tablica_danych.setturned(!Tablica_danych.getturned());
+		int temp;
+		temp = Tablica_danych.getdlugosc();
+		Tablica_danych.setdlugosc(Tablica_danych.getwysokosc());
+		Tablica_danych.setwysokosc(temp);
+		if (Tablica_danych.getPozy() + Tablica_danych.getwysokosc() > 770)
+		{
+			Tablica_danych.setgameover(true);
+		}
+		else if (Tablica_danych.getPozx() + Tablica_danych.getdlugosc() > 1060)
+		{
+			Tablica_danych.setgameover(true);
+		}
 
 	}
-
-	else if (GetAsyncKeyState(VK_RIGHT))
+	else if (GetAsyncKeyState(0x51))
 	{
-		Tablica_danych.setkierunek(4);
-
+		Tablica_danych.setturned(!Tablica_danych.getturned());
+		int temp;
+		temp = Tablica_danych.getdlugosc();
+		Tablica_danych.setdlugosc(Tablica_danych.getwysokosc());
+		Tablica_danych.setwysokosc(temp);
+		if (Tablica_danych.getPozy() + Tablica_danych.getwysokosc() > 770)
+		{
+			Tablica_danych.setgameover(true);
+		}
+		else if (Tablica_danych.getPozx() + Tablica_danych.getdlugosc() > 1060)
+		{
+			Tablica_danych.setgameover(true);
+		}
 	}
+}
+void Game::IsitGameover()
+{
 	int p = Tablica_danych.getPozy() - 30;
 	if (Tablica_danych.getkierunek() == 1 && p < 0)
 	{
@@ -352,308 +390,303 @@ void Game::UpdateModel()
 	{
 		Tablica_danych.setgameover(true);
 	}
-	if (GetAsyncKeyState(0x45))
-	{
-		Tablica_danych.setturned(!Tablica_danych.getturned());
-		int temp;
-		temp = Tablica_danych.getdlugosc();
-		Tablica_danych.setdlugosc(Tablica_danych.getwysokosc());
-		Tablica_danych.setwysokosc(temp);
-		if (Tablica_danych.getPozy() + Tablica_danych.getwysokosc() > 770)
-		{
-			Tablica_danych.setgameover(true);
-		}
-		else if (Tablica_danych.getPozx() + Tablica_danych.getdlugosc() > 1060)
-		{
-			Tablica_danych.setgameover(true);
-		}
-
-	}
-	else if (GetAsyncKeyState(0x51))
-	{
-		Tablica_danych.setturned(!Tablica_danych.getturned());
-		int temp;
-		temp = Tablica_danych.getdlugosc();
-		Tablica_danych.setdlugosc(Tablica_danych.getwysokosc());
-			Tablica_danych.setwysokosc(temp);
-		if (Tablica_danych.getPozy() + Tablica_danych.getwysokosc() > 770)
-		{
-			Tablica_danych.setgameover(true);
-		}
-		else if (Tablica_danych.getPozx() + Tablica_danych.getdlugosc() > 1060)
-		{
-			Tablica_danych.setgameover(true);
-		}
-	}
-
 }
-	
-	
 
+void Game::RandomizeOwocekLocation()
+{
+	if (Tablica_danych.getIsEaten() == true)
+	{
+		if (Tablica_danych.geti() == -1)
+		{
+		}
+		if (Tablica_danych.getturned() == false)
+			Tablica_danych.setdlugosc(Tablica_danych.getdlugosc() + 30);
+		else
+			Tablica_danych.setwysokosc(Tablica_danych.getwysokosc() + 30);
+		Tablica_danych.setczas(Tablica_danych.getczas() - 20);  // z kazdym zjedzonym owockiem zmienna Tablica_danych.getczas() siê zmniejsza, skutkuj¹c przyœpieszeniem rozgrywki
+		Tablica_danych.setPozycjaOwocekx((rand() % ((gfx.ScreenWidth - 30 - Tablica_danych.getHardmodeborder()) / 30)) * 30);
+		Tablica_danych.setPozycjaOwoceky((rand() % ((gfx.ScreenHeight - 30 - Tablica_danych.getHardmodeborder()) / 30)) * 30);
+		if (Tablica_danych.geti() == -1)
+		{
+			Tablica_danych.setPozycjaOwocekx((rand() % 10) * 30);
+			Tablica_danych.setPozycjaOwoceky((rand() % 10) * 30);
+		}
+		while (Tablica_danych.getPozycjaOwoceky() < 60)
+		{
+			if (Tablica_danych.getPozycjaOwocekx() < 180) {
 
-void Game::ComposeFrame() {
-	bool czydalrade = false;
-	srand(time(NULL));
-	int iterator1 = 0;
-		if (Tablica_danych.getkierunek() == 1)
-		{
-			Tablica_danych.setPozy(Tablica_danych.getPozy() - 30);
-		}
-
-		else if (Tablica_danych.getkierunek() == 2)
-		{
-			Tablica_danych.setPozy(Tablica_danych.getPozy() + 30);
-		}
-		else if (Tablica_danych.getkierunek() == 4)
-		{
-			Tablica_danych.setPozx(Tablica_danych.getPozx() + 30);
-		}
-		else if (Tablica_danych.getkierunek() == 3)
-		{
-			Tablica_danych.setPozx(Tablica_danych.getPozx() - 30);
-		}											//ponizej rysowanie czerwonych granic
-		Draw_Borders();
-		
-		while (iterator1 < Tablica_danych.geti())	//rysowanie min
-		{
-			gfx.DrawSprite(Tabela_Min_x[iterator1], Tabela_Min_y[iterator1], Tablica_Powierzchni.mina, 3);
-			iterator1++;
-		}
-		iterator1 = 0;
-
-		
-		if (Tablica_danych.getIsEaten() == true)
-		{	if(Tablica_danych.geti()==-1)
-		{
-		}
-			if (Tablica_danych.getturned() == false)
-				Tablica_danych.setdlugosc(Tablica_danych.getdlugosc() + 30);
+				srand(time(NULL));
+				Tablica_danych.setPozycjaOwoceky((rand() % 26) * 30);
+				if (Tablica_danych.geti() == -1)
+				{
+					Tablica_danych.setPozycjaOwoceky((rand() % 10) * 30);
+				}
+			}
 			else
-				Tablica_danych.setwysokosc(Tablica_danych.getwysokosc() + 30);
-			Tablica_danych.setczas(Tablica_danych.getczas() - 20);  // z kazdym zjedzonym owockiem zmienna Tablica_danych.getczas() siê zmniejsza, skutkuj¹c przyœpieszeniem rozgrywki
-			Tablica_danych.setPozycjaOwocekx((rand() % ((gfx.ScreenWidth - 30 - Tablica_danych.getHardmodeborder()) / 30)) * 30); 
-			Tablica_danych.setPozycjaOwoceky((rand() % ((gfx.ScreenHeight - 30 - Tablica_danych.getHardmodeborder()) / 30)) * 30);
-			if (Tablica_danych.geti() == -1)
-			{
-				Tablica_danych.setPozycjaOwocekx((rand() % 10) * 30);
-				Tablica_danych.setPozycjaOwoceky((rand() % 10) * 30);
-			}
-			while (Tablica_danych.getPozycjaOwoceky()<60)
-			{
-				if (Tablica_danych.getPozycjaOwocekx() < 180) {
-					
-					srand(time(NULL));
-					Tablica_danych.setPozycjaOwoceky((rand() % 26) * 30);
-					if (Tablica_danych.geti() == -1)
-					{
-						Tablica_danych.setPozycjaOwoceky((rand() % 10) * 30);
-					}
-				}
-				else
-					break;
-				}
-			if (Tablica_danych.gethardmode() == true)
-			{
-				Tablica_danych.setHardmodeborder(Tablica_danych.getHardmodeborder()+15);
-			}
-			Tablica_danych.seti(Tablica_danych.geti()+1);
-			Tablica_danych.setIsEaten(false);
-			Tablica_danych.setbomba(true);
-			Tabela_Min_x.clear();
-			Tabela_Min_y.clear();
+				break;
 		}
-		if (Tablica_danych.getbomba() == true)
+		if (Tablica_danych.gethardmode() == true)	//sprawdza czy jest odpalony tryb hardmode zeby pomniejszac granice z zjedzeniem owocka
 		{
-			int iterator2 = 0;
-			Tablica_danych.setbomba(false);
-			while (iterator1 < Tablica_danych.geti())
+			Tablica_danych.setHardmodeborder(Tablica_danych.getHardmodeborder() + 15);
+		}
+		Tablica_danych.seti(Tablica_danych.geti() + 1);
+		Tablica_danych.setIsEaten(false);
+		Tablica_danych.setbomba(true);
+		Tabela_Min_x.clear();
+		Tabela_Min_y.clear();
+	}
+}
+void Game::Draw_Mines()
+{
+	while (iterator1 < Tablica_danych.geti())	//rysowanie min
+	{
+		gfx.DrawSprite(Tabela_Min_x[iterator1], Tabela_Min_y[iterator1], Tablica_Powierzchni.mina, 3);
+		iterator1++;
+	}
+	iterator1 = 0;
+}
+void Game::RandomizeMineLocation()
+{
+	if (Tablica_danych.getbomba() == true)
+	{
+		int iterator2 = 0;
+		Tablica_danych.setbomba(false);
+		while (iterator1 < Tablica_danych.geti())
+		{
+			Tablica_danych.setPozMina_x((rand() % 35) * 30);
+			Tablica_danych.setPozMinay((rand() % 25) * 30);
+			int iterator3 = 0;
+			while (																				//Upewnienie siê ¿e mina nie pojawi sie w:
+				(Tablica_danych.getPozMina_x() == Tablica_danych.getPozycjaOwocekx() && Tablica_danych.getPozMinay() == Tablica_danych.getPozycjaOwoceky()) ||		//W owocku
+				(Tablica_danych.getPozMina_x() == Tablica_danych.getPozx() && Tablica_danych.getPozMinay() == Tablica_danych.getPozy()) ||						//-nas
+				(Tablica_danych.getPozMina_x() == Tablica_danych.getPozx() - 30 && Tablica_danych.getPozMinay() == Tablica_danych.getPozy()) ||				//na lewo od nas
+				(Tablica_danych.getPozMina_x() == Tablica_danych.getPozx() && Tablica_danych.getPozMinay() == Tablica_danych.getPozy() - 30) ||				//nad nami
+				(Tablica_danych.getPozMina_x() == Tablica_danych.getPozx() && Tablica_danych.getPozMinay() == Tablica_danych.getPozy() + 30 + Tablica_danych.getwysokosc()) ||		//pod nami
+				(Tablica_danych.getPozMina_x() == Tablica_danych.getPozx() + 30 + Tablica_danych.getdlugosc() && Tablica_danych.getPozMinay() == Tablica_danych.getPozy()))		//na prawo od nas
 			{
+
+
+				srand(time(NULL));
 				Tablica_danych.setPozMina_x((rand() % 35) * 30);
 				Tablica_danych.setPozMinay((rand() % 25) * 30);
-				int iterator3 = 0;
-				while (																				//Upewnienie siê ¿e mina nie pojawi sie w:
-					(Tablica_danych.getPozMina_x()==Tablica_danych.getPozycjaOwocekx() && Tablica_danych.getPozMinay()==Tablica_danych.getPozycjaOwoceky()) ||		//W owocku
-					(Tablica_danych.getPozMina_x()==Tablica_danych.getPozx() && Tablica_danych.getPozMinay()== Tablica_danych.getPozy())||						//-nas
-					(Tablica_danych.getPozMina_x() == Tablica_danych.getPozx()-30 && Tablica_danych.getPozMinay() == Tablica_danych.getPozy())||				//na lewo od nas
-					(Tablica_danych.getPozMina_x() == Tablica_danych.getPozx() && Tablica_danych.getPozMinay() == Tablica_danych.getPozy() -30)||				//nad nami
-					(Tablica_danych.getPozMina_x() == Tablica_danych.getPozx() && Tablica_danych.getPozMinay() == Tablica_danych.getPozy() +30+Tablica_danych.getwysokosc())||		//pod nami
-					(Tablica_danych.getPozMina_x() == Tablica_danych.getPozx()+30+Tablica_danych.getdlugosc() && Tablica_danych.getPozMinay() == Tablica_danych.getPozy()))		//na prawo od nas
-				{
-						
-
-						srand(time(NULL));
-						Tablica_danych.setPozMina_x((rand() % 35) * 30);
-						Tablica_danych.setPozMinay((rand() % 25) * 30);
-
-					}
-				
-
-				Tabela_Min_x.push_back(Tablica_danych.getPozMina_x());
-				Tabela_Min_y.push_back(Tablica_danych.getPozMinay());
-				if (Tablica_danych.getturned() == false)
-				{
-					while (iterator2 != Tablica_danych.getdlugosc())
-					{
-						if (Tablica_danych.getPozMina_x() == Tablica_danych.getPozx() + iterator2 && Tablica_danych.getPozMinay() == Tablica_danych.getPozy())
-						{
-							Tabela_Min_x.pop_back();
-							Tabela_Min_y.pop_back();
-							iterator1 = iterator1 - 1;
-							iterator2 = 0;
-							break;
-						}
-						iterator2 += 30;
-					}
-				}
-				else
-				{
-					while (iterator2 != Tablica_danych.getwysokosc())
-					{
-						if (Tablica_danych.getPozMina_x() == Tablica_danych.getPozx() && Tablica_danych.getPozMinay() == Tablica_danych.getPozy() + iterator2)
-						{
-							Tabela_Min_x.pop_back();
-							Tabela_Min_y.pop_back();
-							iterator1 = iterator1 - 1;
-							iterator2 = 0;
-							break;
-						}
-						iterator2 += 30;
-					}
-				}
-				iterator1++;
 
 			}
-			iterator1 = 0;
-			czydalrade = true;
-		}
-		int iterator3 = 0;
-		if (Tablica_danych.getturned() == false)
-		{
-			while (iterator3 != Tablica_danych.getdlugosc())
-			{
-				if (iterator3 + Tablica_danych.getPozx() == Tablica_danych.getPozycjaOwocekx() && Tablica_danych.getPozy() == Tablica_danych.getPozycjaOwoceky())	//sprawdzanie czy w danej klatce zjedzono owocek
-					Tablica_danych.setIsEaten(true);
-				iterator3 += 30;
-			}
-			iterator3 = 0;
-			while (iterator3 != Tablica_danych.getdlugosc())
-			{
-				if (Tablica_danych.getbomba() == true)
-				{
-					while (iterator1 < Tablica_danych.geti() - 1)
-					{
-						if (Tablica_danych.getPozx() + iterator3 == Tabela_Min_x[iterator1] && Tablica_danych.getPozy() == Tabela_Min_y[iterator1])
-						{
-							if (czydalrade == false)
-								Tablica_danych.setgameover(true);
-							czydalrade = false;
 
-						}
-						iterator1++;
-					}
-					iterator1 = 0;
-					iterator3 += 30;
-				}
-				else
-				{
-					while (iterator1 < Tablica_danych.geti())
-					{
-						if (Tablica_danych.getPozx() + iterator3 == Tabela_Min_x[iterator1] && Tablica_danych.getPozy() == Tabela_Min_y[iterator1])
-						{
-							Tablica_danych.setgameover(true);
 
-						}
-						iterator1++;
-					}
-					iterator1 = 0;
-					iterator3 += 30;
-				}
-			}
-		}
-		else
-		{
-			while (iterator3 != Tablica_danych.getwysokosc())
-			{
-				if (Tablica_danych.getPozx() == Tablica_danych.getPozycjaOwocekx() && Tablica_danych.getPozy() +iterator3 == Tablica_danych.getPozycjaOwoceky())
-					Tablica_danych.setIsEaten(true);
-				iterator3 += 30;
-			}
-			iterator3 = 0;
-			while (iterator3 != Tablica_danych.getwysokosc())
-			{
-				if (Tablica_danych.getbomba() == true)
-				{
-					while (iterator1 < Tablica_danych.geti() - 1)	//sprawdzanie czy gracz znalazl sie w jakiejs z min
-					{
-						if (Tablica_danych.getPozx() == Tabela_Min_x[iterator1] && Tablica_danych.getPozy() +iterator3 == Tabela_Min_y[iterator1])
-						{
-							if (czydalrade == false)
-								Tablica_danych.setgameover(true);
-							czydalrade = false;
-
-						}
-						iterator1++;
-					}
-					iterator1 = 0;
-					iterator3 += 30;
-				}
-				else
-				{
-					while (iterator1 < Tablica_danych.geti())
-					{
-						if (Tablica_danych.getPozx() == Tabela_Min_x[iterator1] && Tablica_danych.getPozy() + iterator3 == Tabela_Min_y[iterator1])
-						{
-							Tablica_danych.setgameover(true);
-
-						}
-						iterator1++;
-					}
-					iterator1 = 0;
-					iterator3 += 30;
-				}
-			}
-		}
-		if (Tablica_danych.getdlugosc() == 0 || Tablica_danych.getwysokosc() == 0)
-		{
-			Tablica_danych.setdlugosc(30);
-			Tablica_danych.setwysokosc(30);
-		}
-		Powierzchnia gracz = Powierzchnia(Tablica_danych.getdlugosc(), Tablica_danych.getwysokosc());
-		gfx.DrawSprite(Tablica_danych.getPozycjaOwocekx(), Tablica_danych.getPozycjaOwoceky(), Tablica_Powierzchni.owocek);	//rysowanie owocku
-		Sleep(Tablica_danych.getczas());
-		if (Tablica_danych.getturned() == true)
-		{
-
-		}
-		
-		if (Tablica_danych.getgameover() == true)
-		{
-			Tablica_danych.sethardmode(false);
-			Tablica_danych.setHardmodeborder(0);
-			Tablica_danych.setgameover(false);
-			gameoversound.Play();
-			gfx.DrawSprite(0, 0, Tablica_Powierzchni.gameoverimage, 3);
+			Tabela_Min_x.push_back(Tablica_danych.getPozMina_x());
+			Tabela_Min_y.push_back(Tablica_danych.getPozMinay());
 			if (Tablica_danych.getturned() == false)
-				Tablica_danych.setdlugosc(0);
+			{
+				while (iterator2 != Tablica_danych.getdlugosc())
+				{
+					if (Tablica_danych.getPozMina_x() == Tablica_danych.getPozx() + iterator2 && Tablica_danych.getPozMinay() == Tablica_danych.getPozy())
+					{
+						Tabela_Min_x.pop_back();
+						Tabela_Min_y.pop_back();
+						iterator1 = iterator1 - 1;
+						iterator2 = 0;
+						break;
+					}
+					iterator2 += 30;
+				}
+			}
 			else
-				Tablica_danych.setwysokosc(0);
-			Tablica_danych.setIsEaten(true);
-			Tablica_danych.setPozx(60);
-			Tablica_danych.setPozy(60);
-			Tablica_danych.setczas(370);
-			iterator1 = 0;
-			Tablica_danych.seti(-1);
-			Tabela_Min_x.clear();
-			Tabela_Min_y.clear();
-			Tablica_danych.setbomba(false);
-			Tablica_danych.setkierunek(-1);
-			Tablica_danych.setturned(false);
-			if (Tablica_danych.gethighscore() > Tablica_danych.getcurrenthighscore())
-				Tablica_danych.setcurrenthighscore(Tablica_danych.gethighscore());
-			else;
+			{
+				while (iterator2 != Tablica_danych.getwysokosc())
+				{
+					if (Tablica_danych.getPozMina_x() == Tablica_danych.getPozx() && Tablica_danych.getPozMinay() == Tablica_danych.getPozy() + iterator2)
+					{
+						Tabela_Min_x.pop_back();
+						Tabela_Min_y.pop_back();
+						iterator1 = iterator1 - 1;
+						iterator2 = 0;
+						break;
+					}
+					iterator2 += 30;
+				}
+			}
+			iterator1++;
+
 		}
-		gfx.DrawSprite(Tablica_danych.getPozx(), Tablica_danych.getPozy(), gracz);	//nasz gracz
-		Draw_highscore();
+		iterator1 = 0;
+		czydalrade = true;
+	}
+
+	if (Tablica_danych.getturned() == false)
+	{
+		while (iterator3 != Tablica_danych.getdlugosc())
+		{
+			if (iterator3 + Tablica_danych.getPozx() == Tablica_danych.getPozycjaOwocekx() && Tablica_danych.getPozy() == Tablica_danych.getPozycjaOwoceky())	//sprawdzanie czy w danej klatce zjedzono owocek
+				Tablica_danych.setIsEaten(true);
+			iterator3 += 30;
+		}
+		iterator3 = 0;
+		while (iterator3 != Tablica_danych.getdlugosc())
+		{
+			if (Tablica_danych.getbomba() == true)
+			{
+				while (iterator1 < Tablica_danych.geti() - 1)
+				{
+					if (Tablica_danych.getPozx() + iterator3 == Tabela_Min_x[iterator1] && Tablica_danych.getPozy() == Tabela_Min_y[iterator1])
+					{
+						if (czydalrade == false)
+							Tablica_danych.setgameover(true);
+						czydalrade = false;
+
+					}
+					iterator1++;
+				}
+				iterator1 = 0;
+				iterator3 += 30;
+			}
+			else
+			{
+				while (iterator1 < Tablica_danych.geti())
+				{
+					if (Tablica_danych.getPozx() + iterator3 == Tabela_Min_x[iterator1] && Tablica_danych.getPozy() == Tabela_Min_y[iterator1])
+					{
+						Tablica_danych.setgameover(true);
+
+					}
+					iterator1++;
+				}
+				iterator1 = 0;
+				iterator3 += 30;
+			}
+		}
+	}
+	else
+	{
+		while (iterator3 != Tablica_danych.getwysokosc())
+		{
+			if (Tablica_danych.getPozx() == Tablica_danych.getPozycjaOwocekx() && Tablica_danych.getPozy() + iterator3 == Tablica_danych.getPozycjaOwoceky())
+				Tablica_danych.setIsEaten(true);
+			iterator3 += 30;
+		}
+		iterator3 = 0;
+		while (iterator3 != Tablica_danych.getwysokosc())
+		{
+			if (Tablica_danych.getbomba() == true)
+			{
+				while (iterator1 < Tablica_danych.geti() - 1)	//sprawdzanie czy gracz znalazl sie w jakiejs z min
+				{
+					if (Tablica_danych.getPozx() == Tabela_Min_x[iterator1] && Tablica_danych.getPozy() + iterator3 == Tabela_Min_y[iterator1])
+					{
+						if (czydalrade == false)
+							Tablica_danych.setgameover(true);
+						czydalrade = false;
+
+					}
+					iterator1++;
+				}
+				iterator1 = 0;
+				iterator3 += 30;
+			}
+			else
+			{
+				while (iterator1 < Tablica_danych.geti())
+				{
+					if (Tablica_danych.getPozx() == Tabela_Min_x[iterator1] && Tablica_danych.getPozy() + iterator3 == Tabela_Min_y[iterator1])
+					{
+						Tablica_danych.setgameover(true);
+
+					}
+					iterator1++;
+				}
+				iterator1 = 0;
+				iterator3 += 30;
+			}
+		}
+	}
+}
+void Game::UpdateOnEaten()
+{
+	Draw_Mines();
+	RandomizeOwocekLocation();
+	RandomizeMineLocation();
+	
+}
+void Game::OnGameover()
+{
+	if (Tablica_danych.getgameover() == true)
+	{
+		Tablica_danych.sethardmode(false);
+		Tablica_danych.setHardmodeborder(0);
+		Tablica_danych.setgameover(false);
+		gameoversound.Play();
+		gfx.DrawSprite(0, 0, Tablica_Powierzchni.gameoverimage, 3);
+		if (Tablica_danych.getturned() == false)
+			Tablica_danych.setdlugosc(0);
+		else
+			Tablica_danych.setwysokosc(0);
+		Tablica_danych.setIsEaten(true);
+		Tablica_danych.setPozx(60);
+		Tablica_danych.setPozy(60);
+		Tablica_danych.setczas(370);
+		iterator1 = 0;
+		Tablica_danych.seti(-1);
+		Tabela_Min_x.clear();
+		Tabela_Min_y.clear();
+		Tablica_danych.setbomba(false);
+		Tablica_danych.setkierunek(-1);
+		Tablica_danych.setturned(false);
+		if (Tablica_danych.gethighscore() > Tablica_danych.getcurrenthighscore())
+			Tablica_danych.setcurrenthighscore(Tablica_danych.gethighscore());
+		else;
+	}
+}
+void Game::ComposeEndFrame()
+{
+	if (Tablica_danych.getdlugosc() == 0 || Tablica_danych.getwysokosc() == 0)
+	{
+		Tablica_danych.setdlugosc(30);
+		Tablica_danych.setwysokosc(30);
+	}
+	Tablica_Powierzchni.gracz = Powierzchnia(Tablica_danych.getdlugosc(), Tablica_danych.getwysokosc());
+	gfx.DrawSprite(Tablica_danych.getPozycjaOwocekx(), Tablica_danych.getPozycjaOwoceky(), Tablica_Powierzchni.owocek);	//rysowanie owocku
+	Sleep(Tablica_danych.getczas());
+	if (Tablica_danych.getturned() == true)
+	{
+	}
+}
+void Game::Move()
+{
+	if (Tablica_danych.getkierunek() == 1)
+	{
+		Tablica_danych.setPozy(Tablica_danych.getPozy() - 30);
+	}
+
+	else if (Tablica_danych.getkierunek() == 2)
+	{
+		Tablica_danych.setPozy(Tablica_danych.getPozy() + 30);
+	}
+	else if (Tablica_danych.getkierunek() == 4)
+	{
+		Tablica_danych.setPozx(Tablica_danych.getPozx() + 30);
+	}
+	else if (Tablica_danych.getkierunek() == 3)
+	{
+		Tablica_danych.setPozx(Tablica_danych.getPozx() - 30);
+	}
+}
+void Game::UpdateModel()
+{
+	GetDirection();
+	IsitGameover();
+	Turn();
+
+
+}
+void Game::ComposeFrame() {
+	
+	srand(time(NULL));
+	Move();												
+	Draw_Borders();
+	UpdateOnEaten();
+	ComposeEndFrame();
+	OnGameover();		
+	gfx.DrawSprite(Tablica_danych.getPozx(), Tablica_danych.getPozy(), Tablica_Powierzchni.gracz);	//nasz gracz
+	Draw_highscore();
 
 			
 
