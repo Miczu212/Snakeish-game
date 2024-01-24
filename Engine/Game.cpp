@@ -23,6 +23,7 @@
 #include <iostream>
 #include<conio.h>
 #include"ChiliWin.h"
+#include <assert.h>
 #include<ctime>
 Game::Game( MainWindow& wnd )
 	:
@@ -52,6 +53,7 @@ void Game::Draw_Borders()
 	for (int op = 0; op < 1080 - Tablica_danych.getHardmodeborder(); op++)
 	{
 		gfx.PutPixel(op, 779 - Tablica_danych.getHardmodeborder(), Colors::Red);
+		
 	}
 	for (int po = 0; po < 780 - Tablica_danych.getHardmodeborder(); po++)
 	{
@@ -68,6 +70,7 @@ void Game::Draw_Borders()
 }
 void Game::GetDirection()
 {
+	
 	if (GetAsyncKeyState(0x48))
 	{
 		Tablica_danych.sethardmode(true);
@@ -93,10 +96,14 @@ void Game::GetDirection()
 		Tablica_danych.setkierunek(4);
 
 	}
+	assert(Tablica_danych.getkierunek() > 0 && Tablica_danych.getkierunek() < 5);
 }
 void Game::Draw_highscore()
 {
 	gfx.DrawSprite(0, 0, Tablica_Powierzchni.hss, 3);
+
+	assert(Tablica_danych.geti() > -1 && Tablica_danych.geti() < 18);
+
 	if (Tablica_danych.geti() == 0)
 		gfx.DrawSprite(0, 30, Tablica_Powierzchni.cyfra1, 3);
 	else if (Tablica_danych.geti() == 1)
